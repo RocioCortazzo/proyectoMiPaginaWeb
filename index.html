@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro e Inicio de Sesión</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>  
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Formulario de Registro -->
+        <div id="registerForm" class="form-container">
+            <h1> Bienvenidos a nuestra pagina oficial </h1>
+            <img src="paliativos.jpg"/>
+            <h2>Registrarse</h2>
+            <form>
+                <input type="text" id="registerName" placeholder="Nombre" required /><br>
+                <input type="email" id="registerEmail" placeholder="Email" required /><br>
+                <button type="submit">Registrarse</button>
+            </form>
+            <p id="registerMessage"></p>
+        </div>
+
+        <!-- Formulario de Inicio de Sesión -->
+        <div id="loginForm" class="form-container">
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <input type="text" id="loginName" placeholder="Nombre" required /><br>
+                <input type="email" id="loginEmail" placeholder="Email" required /><br>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+</body>
+</html>
