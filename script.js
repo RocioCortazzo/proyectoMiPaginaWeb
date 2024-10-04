@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Inicio de sesión
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const loginName = document.getElementById('loginName').value;

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tienda cuidados paliativos </title>
+</head>
+<body>
+    <h1 id="welcomeMessage"></h1>
+
+    <div class="container">
+        <!-- Catálogo de productos -->
+        <div class="catalogo">
+        <h2> Es un gusto tenerte en nuestra pagina de los amigos de cuidados paliativos </h2>
+        <br>
+        <p>Somos un grupo sin fines de lucro dispuestoas a brindar su ayuda a pacientes en cuidados paliativos en situacion de vulnerabilidad social y sus familias. </p>
+        <br>
+
+            <h2>Catálogo de Productos</h2>
+
+            <div class="product">
+                <img src="https://w7.pngwing.com/pngs/275/779/png-transparent-rubber-duck-toy-rubber-duck-toy-bathtub-duck-animals-bathroom-toilet-thumbnail.png" alt="Producto 1" class="product-image">
+                <div class="product-info">
+                    <span>Producto 1</span>
+                    <span>$10</span>
+                </div>
+                <p class="review">"Excelente calidad, muy recomendable." - Juan</p>
+                <button onclick="agregarAlCarrito('Producto 1', 10)">Agregar al carrito</button>
+            </div>
+
+            <div class="product">
+                <img src="ruta/a/tu/imagen2.jpg" alt="Producto 2" class="product-image">
+                <div class="product-info">
+                    <span>Producto 2</span>
+                    <span>$20</span>
+                </div>
+                <p class="review">"Buena relación calidad-precio." - María</p>
+                <button onclick="agregarAlCarrito('Producto 2', 20)">Agregar al carrito</button>
+            </div>
+
+            <div class="product">
+                <img src="ruta/a/tu/imagen3.jpg" alt="Producto 3" class="product-image">
+                <div class="product-info">
+                    <span>Producto 3</span>
+                    <span>$30</span>
+                </div>
+                <p class="review">"No me lo esperaba tan bueno, ¡me encantó!" - Pedro</p>
+                <button onclick="agregarAlCarrito('Producto 3', 30)">Agregar al carrito</button>
+            </div>
+
+            <div class="product">
+                <img src="ruta/a/tu/imagen4.jpg" alt="Producto 4" class="product-image">
+                <div class="product-info">
+                    <span>Producto 4</span>
+                    <span>$40</span>
+                </div>
+                <p class="review">"Producto de alta calidad, vale cada peso." - Ana</p>
+                <button onclick="agregarAlCarrito('Producto 4', 40)">Agregar al carrito</button>
+            </div>
+        </div>
+
+        <!-- Carrito de compras -->
+        <div class="carrito">
+            <h2>Carrito de Compras</h2>
+            <div id="carritoItems">
+                <p class="empty-cart">El carrito está vacío.</p>
+            </div>
+            <div id="total">Total: $0</div>
+            <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
+            <button id="contacto" onclick="mostrarContacto()">Contacto de la tienda</button>
+        </div>
+    </div>
+
+    <script>
+        let carrito = [];
+        let totalCompra = 0;
+
+        // Obtener el nombre del usuario desde la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name');
+
+        // Mostrar el mensaje de bienvenida
+        document.getElementById('welcomeMessage').textContent = `Bienvenido, ${userName}!`;
+
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(producto, precio) {
+            carrito.push({ producto, precio });
+            totalCompra += precio;
+            mostrarCarrito();
+        }
+
+        // Función para mostrar el carrito
+        function mostrarCarrito() {
+            const carritoItems = document.getElementById('carritoItems');
+            carritoItems.innerHTML = '';  // Limpiar contenido actual
+
+            if (carrito.length === 0) {
+                carritoItems.innerHTML = '<p class="empty-cart">El carrito está vacío.</p>';
+            } else {
+                carrito.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = `${item.producto} - $${item.precio}`;
+                    carritoItems.appendChild(div);
+                });
+            }
+
+            document.getElementById('total').textContent = `Total: $${totalCompra}`;
+        }
+
+        // Función para finalizar la compra
+        function finalizarCompra() {
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío, no puedes finalizar la compra.");
+            } else {
+                alert(`¡Gracias por tu compra, ${userName}! Has gastado $${totalCompra}.`);
+                carrito = [];
+                totalCompra = 0;
+                mostrarCarrito();
+            }
+        }
+
+        // Función para mostrar el contacto de la tienda
+        function mostrarContacto() {
+            alert('Tienda Falsa\nTeléfono: 123-456-789\nEmail: contacto@tiendafalsa.com');
+        }
+    </script>
+</body>
+</html>
