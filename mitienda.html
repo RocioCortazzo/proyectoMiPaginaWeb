@@ -10,7 +10,7 @@
     <h1 id="welcomeMessage"></h1>
 
     <div class="container">
-        <!-- Catálogo de productos -->
+        
         <div class="catalogo">
         <h2> Es un gusto tenerte en nuestra pagina de los amigos de cuidados paliativos </h2>
         <br>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <!-- Carrito de compras -->
+     
         <div class="carrito">
             <h2>Carrito de Compras</h2>
             <div id="carritoItems">
@@ -76,24 +76,23 @@
         let carrito = [];
         let totalCompra = 0;
 
-        // Obtener el nombre del usuario desde la URL
+      
         const urlParams = new URLSearchParams(window.location.search);
         const userName = urlParams.get('name');
 
-        // Mostrar el mensaje de bienvenida
         document.getElementById('welcomeMessage').textContent = `Bienvenido, ${userName}!`;
 
-        // Función para agregar productos al carrito
+        
         function agregarAlCarrito(producto, precio) {
             carrito.push({ producto, precio });
             totalCompra += precio;
             mostrarCarrito();
         }
 
-        // Función para mostrar el carrito
+       
         function mostrarCarrito() {
             const carritoItems = document.getElementById('carritoItems');
-            carritoItems.innerHTML = '';  // Limpiar contenido actual
+            carritoItems.innerHTML = '';  
 
             if (carrito.length === 0) {
                 carritoItems.innerHTML = '<p class="empty-cart">El carrito está vacío.</p>';
@@ -108,7 +107,7 @@
             document.getElementById('total').textContent = `Total: $${totalCompra}`;
         }
 
-        // Función para finalizar la compra
+        
         function finalizarCompra() {
             if (carrito.length === 0) {
                 alert("Tu carrito está vacío, no puedes finalizar la compra.");
@@ -120,7 +119,7 @@
             }
         }
 
-        // Función para mostrar el contacto de la tienda
+      
         function mostrarContacto() {
             alert('Tienda Falsa\nTeléfono: 123-456-789\nEmail: contacto@tiendafalsa.com');
         }
