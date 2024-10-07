@@ -149,8 +149,8 @@ button:hover {
     margin-top: 10px;
 }
 .product-image {
-    width: 100%; /* Ajusta el ancho según sea necesario */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 100%; 
+    height: auto; 
     border-radius: 5px; /* Bordes redondeados */
     margin-bottom: 10px; /* Espacio entre la imagen y el texto */
 }
