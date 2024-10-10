@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mitienda.css">
     <title>Tienda cuidados paliativos</title>
 </head>
 <body>
@@ -11,77 +11,67 @@
     <p>Somos un grupo sin fines de lucro dispuesto a brindar ayuda a pacientes en cuidados paliativos en situación de vulnerabilidad social y sus familias.</p>
 
     <div class="form-container">
-       
-       <h2>Catálogo de Productos</h2>
+        <h2>Catálogo de Productos</h2>
 
-            <div class="product">
-                <img src="bolsita1.jpg" width="200" alt="bolsita">
-                <div class="product-info">
-                    <span>Bolsita1 "Cuando pienses en las personas por las que valen la pena luchar. no olvides incluirte"</span>
-
-                    <span>$250</span>
-                </div>
-                <p class="review">"Me encanta comprar sabiendo que es por una buena causa." - Juan</p>
-                <button onclick="agregarAlCarrito('Bolsita 1', 250)">Agregar al carrito</button>
+        <div class="product">
+            <img src="bolsita1.jpg" width="200" alt="bolsita">
+            <div class="product-info">
+                <span>Bolsita 1 "Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte"</span>
+                <span>$250</span>
             </div>
-            <br>
-            <div class="product">
-                <img src="bolsita2.jpg" width="200" alt="bolsita2" class="product-image">
-                <div class="product-info">
-                    <span> Bolsita2 "donde sea que la vida te plante, florece"</span>
-                    <span>$250</span>
-                    <br>
-                </div>
-                <p class="review">"Gracias por ayudar a las personas, me encanta." - María</p>
-                <br>
-                <button onclick="agregarAlCarrito('Producto 2', 250)">Agregar al carrito</button>
-            </div>
-            <br>
-            <div class="product">
-                <img src="bolsita3.jpg" alt="bolsita3" width="200" class="product-image">
-                <div class="product-info">
-                    <span>Bolsita "brillas bien bonito cuando confias en tu potencial"</span>
-                    <span>$250</span>
-                </div>
-                <p class="review">"Que hermoso todo!!" - Marta</p>
-
-                <button onclick="agregarAlCarrito('bolsita 3', 250)">Agregar al carrito</button>
-            </div>
-            <br>
-            <div class="product">
-                <img src="llaveros.jpg" alt="llaveros" width="200" class="product-image">
-                <div class="product-info">
-                    <span>Llaveros</span>
-                    <span>$60</span>
-                </div>
-                <p class="review">"Son maravillosos, quiero!!! - Adrian </p>
-                <br>
-                <button onclick="agregarAlCarrito('llaveros', 60)">Agregar al carrito</button>
-            </div>
+            <p class="review">"Me encanta comprar sabiendo que es por una buena causa." - Juan</p>
+            <button onclick="agregarAlCarrito('Bolsita 1', 250)">Agregar al carrito</button>
         </div>
 
-        <br>
+        <div class="product">
+            <img src="bolsita2.jpg" width="200" alt="bolsita2" class="product-image">
+            <div class="product-info">
+                <span>Bolsita 2 "Donde sea que la vida te plante, florece"</span>
+                <span>$250</span>
+            </div>
+            <p class="review">"Gracias por ayudar a las personas, me encanta." - María</p>
+            <button onclick="agregarAlCarrito('Bolsita 2', 250)">Agregar al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="bolsita3.jpg" alt="bolsita3" width="200" class="product-image">
+            <div class="product-info">
+                <span>Bolsita 3 "Brillas bien bonito cuando confías en tu potencial"</span>
+                <span>$250</span>
+            </div>
+            <p class="review">"¡Qué hermoso todo!" - Marta</p>
+            <button onclick="agregarAlCarrito('Bolsita 3', 250)">Agregar al carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="llaveros.jpg" alt="llaveros" width="200" class="product-image">
+            <div class="product-info">
+                <span>Llaveros</span>
+                <span>$60</span>
+            </div>
+            <p class="review">"Son maravillosos, ¡quiero!" - Adrian</p>
+            <button onclick="agregarAlCarrito('Llaveros', 60)">Agregar al carrito</button>
+        </div>
+
         <div class="product">
             <img src="tazas.jpg" alt="Tazas" width="200" class="product-image">
             <div class="product-info">
                 <span>Tazas</span>
                 <span>$200</span>
             </div>
-            <p class="review">"Son maravillosos, quiero!!! - Adrian </p>
-            <br>
-            <button onclick="agregarAlCarrito('llaveros', 200)">Agregar al carrito</button>
+            <p class="review">"¡Qué divinos diseños!" - Agustina</p>
+            <button onclick="agregarAlCarrito('Tazas', 200)">Agregar al carrito</button>
         </div>
     </div>
 
-        <div class="carrito">
-            <h2>Carrito de Compras</h2>
-            <div id="carritoItems">
-                <p class="empty-cart">El carrito está vacío.</p>
-            </div>
-            <div id="total">Total: $0</div>
-            <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
-            <button id="contacto" onclick="mostrarContacto()">Contacto de la tienda</button>
+    <div class="carrito">
+        <h2>Carrito de Compras</h2>
+        <div id="carritoItems">
+            <p class="empty-cart">El carrito está vacío.</p>
         </div>
+        <div id="total">Total: $0</div>
+        <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
+        <button id="contacto" onclick="mostrarContacto()">Contacto de la tienda</button>
     </div>
 
     <script>
@@ -106,9 +96,9 @@
             if (carrito.length === 0) {
                 carritoItems.innerHTML = '<p class="empty-cart">El carrito está vacío.</p>';
             } else {
-                carrito.forEach(item => {
+                carrito.forEach((item, index) => {
                     const div = document.createElement('div');
-                    div.textContent = `${item.producto} - $${item.precio}`;
+                    div.innerHTML = `${item.producto} - $${item.precio} <button onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
                     carritoItems.appendChild(div);
                 });
             }
@@ -116,11 +106,22 @@
             document.getElementById('total').textContent = `Total: $${totalCompra}`;
         }
 
+        function eliminarDelCarrito(index) {
+            totalCompra -= carrito[index].precio;
+            carrito.splice(index, 1);
+            mostrarCarrito();
+        }
+
         function finalizarCompra() {
             if (carrito.length === 0) {
                 alert("Tu carrito está vacío, no puedes finalizar la compra.");
             } else {
-                alert(`¡Gracias por tu compra, ${userName}! Has ayudado a muchas personas. Has gastado $${totalCompra}.`);
+                let detallesCompra = 'Detalle de tu compra:\n';
+                carrito.forEach(item => {
+                    detallesCompra += `${item.producto} - $${item.precio}\n`;
+                });
+
+                alert(`${detallesCompra}\n¡Gracias por tu compra, ${userName}! Has ayudado a muchas personas. Has gastado $${totalCompra}.`);
                 carrito = [];
                 totalCompra = 0;
                 mostrarCarrito();
@@ -133,3 +134,4 @@
     </script>
 </body>
 </html>
+
