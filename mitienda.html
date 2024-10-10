@@ -8,25 +8,20 @@
 </head>
 <body>
     <h1 id="welcomeMessage"></h1>
+    <p>Somos un grupo sin fines de lucro dispuesto a brindar ayuda a pacientes en cuidados paliativos en situación de vulnerabilidad social y sus familias.</p>
 
-    <div class="container">
-        
-        <div class="catalogo">
-        <h2> Es un gusto tenerte en nuestra pagina de los amigos de cuidados paliativos!</h2> 
-        <br>
-        <p>Somos un grupo sin fines de lucro dispuestos a brindar su ayuda a pacientes en cuidados paliativos en situacion de vulnerabilidad social y sus familias. </p>
-        <br>
-
-            <h2>Catálogo de Productos</h2>
+    <div class="form-container">
+       
+       <h2>Catálogo de Productos</h2>
 
             <div class="product">
-                <img src="https://w7.pngwing.com/pngs/275/779/png-transparent-rubber-duck-toy-rubber-duck-toy-bathtub-duck-animals-bathroom-toilet-thumbnail.png" alt="Producto 1" class="product-image">
+                <img src="bolsita1.jpg" width="200" alt="bolsita">
                 <div class="product-info">
-                    <span>Producto 1</span>
-                    <span>$10</span>
+                    <span>Bolsita "Cuando pienses en las personas por las que valen la pena luchar. no olvides incluirte</span>
+                    <span>$100</span>
                 </div>
                 <p class="review">"Excelente calidad, muy recomendable." - Juan</p>
-                <button onclick="agregarAlCarrito('Producto 1', 10)">Agregar al carrito</button>
+                <button onclick="agregarAlCarrito('Bolsita', 100)">Agregar al carrito</button>
             </div>
 
             <div class="product">
@@ -60,7 +55,6 @@
             </div>
         </div>
 
-     
         <div class="carrito">
             <h2>Carrito de Compras</h2>
             <div id="carritoItems">
@@ -76,12 +70,10 @@
         let carrito = [];
         let totalCompra = 0;
 
-      
         const urlParams = new URLSearchParams(window.location.search);
         const userName = urlParams.get('name');
 
-        document.getElementById('welcomeMessage').textContent = `Bienvenid@, ${userName}!`;
-
+        document.getElementById('welcomeMessage').textContent = `Bienvenid@, ${userName}! Es un placer tenerte en nuestra tienda de cuidados paliativos`;
         
         function agregarAlCarrito(producto, precio) {
             carrito.push({ producto, precio });
@@ -89,7 +81,6 @@
             mostrarCarrito();
         }
 
-       
         function mostrarCarrito() {
             const carritoItems = document.getElementById('carritoItems');
             carritoItems.innerHTML = '';  
@@ -107,21 +98,19 @@
             document.getElementById('total').textContent = `Total: $${totalCompra}`;
         }
 
-        
         function finalizarCompra() {
             if (carrito.length === 0) {
                 alert("Tu carrito está vacío, no puedes finalizar la compra.");
             } else {
-                alert(`¡Gracias por tu compra, ${userName}! Has gastado $${totalCompra}.`);
+                alert(`¡Gracias por tu compra, ${userName}! Has ayudado a muchas personas. Has gastado $${totalCompra}.`);
                 carrito = [];
                 totalCompra = 0;
                 mostrarCarrito();
             }
         }
 
-      
         function mostrarContacto() {
-            alert('Tienda Falsa\nTeléfono: 123-456-789\nEmail: contacto@tiendafalsa.com');
+            alert('Tienda cuidados paliativos\nTeléfono: 098 354 851\nEmail: marianoelrodriguez02@gmail.com');
         }
     </script>
 </body>
