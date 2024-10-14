@@ -1,96 +1,13 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Josefina Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #6a11cb, #2575fc); 
+    background: linear-gradient(to right, hsl(40, 93%, 49%), #2598fc);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff; 
-}
-
-.container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-.form-container {
-    width: 100%;
-    margin-top: 20px;
-    display: none; 
-}
-
-.form-container.active {
-    display: block; 
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-
-input:focus {
-    border-color: #6a11cb; 
-    outline: none; 
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4081; 
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s; 
-}
-
-button:hover {
-    background-color: #f50057; 
-}
-
-#registerMessage, #loginMessage {
-    margin-top: 15px;
-    color: #d9534f; 
-    font-size: 14px;
-}
-
-#toggleFormBtn {
-    background-color: transparent;
-    color: #ff4081; 
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    text-decoration: underline; 
-}
-
-#toggleFormBtn:hover {
-    color: #f50057; 
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
+    color: #536d90;
 }
 
 .container {
@@ -117,23 +34,23 @@ h1 {
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 7px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #afa9a9;
     border-radius: 5px;
     transition: border-color 0.3s;
 }
 
 input:focus {
-    border-color: #6a11cb;
+    border-color: #577cae;
     outline: none;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #ff4081;
-    color: white;
+    background-color: #548891;
+    color: rgb(243, 243, 245);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -142,7 +59,7 @@ button {
 }
 
 button:hover {
-    background-color: #f50057;
+    background-color: #121714;
 }
 
 .gender-selection {
@@ -164,7 +81,7 @@ button:hover {
 
 #toggleFormBtn {
     background-color: transparent;
-    color: #ff4081;
+    color:  #577cae;
     border: none;
     cursor: pointer;
     margin-top: 10px;
@@ -172,6 +89,5 @@ button:hover {
 }
 
 #toggleFormBtn:hover {
-    color: #f50057;
+    color:  #577cae;
 }
-
