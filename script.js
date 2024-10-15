@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (name && email) {
             localStorage.setItem('userName', name);
             localStorage.setItem('userEmail', email);
-            registerMessage.textContent = 'Usuario registrado exitosamente.';
+            registerMessage.textContent = 'Usuario registrado exitosamente. Ya puedes inicar sesión!';
             setTimeout(() => {
                 registerMessage.textContent = '';
             }, 2000);

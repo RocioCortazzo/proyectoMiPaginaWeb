@@ -8,13 +8,41 @@
 </head>
 <body>
     <h1 id="welcomeMessage"></h1>
+    <h2> Breve Reseña </h2>
     <p>Somos un grupo sin fines de lucro dispuesto a brindar ayuda a pacientes en cuidados paliativos en situación de vulnerabilidad social y sus familias.</p>
+    <br>
+    <p>
+         Uno de los móviles que dio lugar a la medicina paliativa fue tomar acción frente al sufrimiento que experimentan las personas mientras atraviesan una enfermedad grave, limitante o amenazante para la vida. Los cuidados paliativos brindan una respuesta profesional, personalizada, holística y humanizada a las necesidades de los pacientes. El trabajo del equipo de Cuidados Paliativos no solo se limita al paciente sino también a su familia y/o personas cercanas, continuando su labor en el acompañamiento durante la etapa del duelo.
+    </p>
+    <br>
+    <p>
+    Estar en cuidados paliativos no siempre es un evento próximo al deceso, ya que muchas veces la patología del paciente puede ser reversible, mejorar y dar el alta. Al pasar a un paciente a cuidados paliativos, buscamos darle mejor calidad de vida, confort, contención e intentamos que la persona viva este proceso en su hogar rodeado de sus seres amados.
+    </p>
+   
+    <h3> Objetivos del grupo</h3>
+    <p> 
+      Nuestro grupo busca brindar apoyo, contención, compasión, comprensión, atención y solidaridad en un aspecto integral donde se incluye tanto la parte material (compra de pañales, canastas alimentarias, frazadas, etc.) como la parte humana y emocional.
+    </p>
+
+    <h3> Desarrollo de actividades de grupo </h3>
+    <p>
+        Nos reunimos una vez a la semana con objetivos preestablecidos a tratar. Luego de cada reunión, se hace un resumen que es compartido en el grupo de WhatsApp.
+    </p>
+   
+    <h3> Requisitos para unirte al grupo </h3>
+    <p>
+        Solo se necesita personas capaces de compartir lo que tengan en sus condiciones. Por ejemplo: hay quienes se ocupan de eventos y prensa, otros asisten a las reuniones aportando ideas y actividades para recaudar fondos, etc. Otros se ocupan de las redes y comunicación, y hay quienes aportan comentarios productivos. En el caso de las empresas y la prensa que nos apoyan y acompañan, brindan lo que esté en su rubro.
+    </p>
+
+    <p>
+        Si tienes ganas de acercarte, puedes dejarnos tu mensaje en la web, buscarnos en nuestras redes sociales o escribirnos a nuestro número. ¡Tu aporte suma! Gracias por tomarte el tiempo para conocernos.
+    </p>
 
     <div class="form-container">
         <h2>Catálogo de Productos</h2>
 
         <div class="product">
-            <img src="bolsita1.jpg" width="200" alt="bolsita">
+            <img src="bolsita1.jpg" width="200" alt="Bolsita 1 con el mensaje 'Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte'">
             <div class="product-info">
                 <span>Bolsita 1 "Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte"</span>
                 <span>$250</span>
@@ -24,7 +52,7 @@
         </div>
 
         <div class="product">
-            <img src="bolsita2.jpg" width="200" alt="bolsita2" class="product-image">
+            <img src="bolsita2.jpg" width="200" alt="Bolsita 2 con el mensaje 'Donde sea que la vida te plante, florece'">
             <div class="product-info">
                 <span>Bolsita 2 "Donde sea que la vida te plante, florece"</span>
                 <span>$250</span>
@@ -34,7 +62,7 @@
         </div>
 
         <div class="product">
-            <img src="bolsita3.jpg" alt="bolsita3" width="200" class="product-image">
+            <img src="bolsita3.jpg" alt="Bolsita 3 con el mensaje 'Brillas bien bonito cuando confías en tu potencial'" width="200">
             <div class="product-info">
                 <span>Bolsita 3 "Brillas bien bonito cuando confías en tu potencial"</span>
                 <span>$250</span>
@@ -44,7 +72,7 @@
         </div>
 
         <div class="product">
-            <img src="llaveros.jpg" alt="llaveros" width="200" class="product-image">
+            <img src="llaveros.jpg" alt="Llaveros artesanales solidarios" width="200">
             <div class="product-info">
                 <span>Llaveros</span>
                 <span>$60</span>
@@ -54,7 +82,7 @@
         </div>
 
         <div class="product">
-            <img src="tazas.jpg" alt="Tazas" width="200" class="product-image">
+            <img src="tazas.jpg" alt="Tazas con diseños personalizados" width="200">
             <div class="product-info">
                 <span>Tazas</span>
                 <span>$200</span>
@@ -82,7 +110,7 @@
         const userName = urlParams.get('name');
 
         document.getElementById('welcomeMessage').textContent = `Bienvenid@, ${userName}! Es un placer tenerte en nuestra tienda de cuidados paliativos`;
-        
+
         function agregarAlCarrito(producto, precio) {
             carrito.push({ producto, precio });
             totalCompra += precio;
@@ -91,7 +119,7 @@
 
         function mostrarCarrito() {
             const carritoItems = document.getElementById('carritoItems');
-            carritoItems.innerHTML = '';  
+            carritoItems.innerHTML = '';
 
             if (carrito.length === 0) {
                 carritoItems.innerHTML = '<p class="empty-cart">El carrito está vacío.</p>';
