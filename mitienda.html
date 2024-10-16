@@ -103,7 +103,6 @@
         </div>
         <div id="total">Total: $0</div>
         <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
-        <button id="contacto" onclick="mostrarContacto()">Contacto de la tienda</button>
     </div>
 
     <script>
@@ -130,7 +129,7 @@
             } else {
                 carrito.forEach((item, index) => {
                     const div = document.createElement('div');
-                    div.innerHTML = `${item.producto} - $${item.precio} <button onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
+                    div.innerHTML = `${item.producto} - $${item.precio} <button class="remove-button" onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
                     carritoItems.appendChild(div);
                 });
             }
@@ -159,11 +158,24 @@
                 mostrarCarrito();
             }
         }
-
-        function mostrarContacto() {
-            alert('Tienda cuidados paliativos\nTeléfono: 098 354 851\nEmail: marianoelrodriguez02@gmail.com');
-        }
     </script>
 </body>
 </html>
+
+
+<footer>
+    <div class="contact-info">
+        <img src="paliativos.jpg" alt="Logo de la tienda" width="100">
+        <h3>Contáctanos</h3>
+        <div class="social-media">
+            <a href="https://wa.me/098354851" target="_blank">WhatsApp</a>
+            <a href="https://www.instagram.com/amigodeloscuidadospaliativos?igsh=MTR5Z3h4Z3Noa3VoNQ==" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/groups/1659633374563285/?ref=share&mibextid=NSMWBT" target="_blank">Facebook</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
 
