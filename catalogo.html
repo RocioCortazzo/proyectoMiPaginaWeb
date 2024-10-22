@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="catalogo.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Catálogo</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h2>Bienvenid@ a nuestro catálogo de productos</h2>
+            <button id="toggleCarritoBtn">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Carrito</span>
+            </button>
+        </div>
+    </header>
+
+    
+    <aside class="carrito-container" id="carritoContainer" style="display:none;">
+        <h2>Carrito de Compras</h2>
+        <div id="carritoItems">
+            <p id="emptyCartMessage" class="empty-cart">El carrito está vacío.</p>
+        </div>
+        <div id="total">Total: $0</div>
+        <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
+    </aside>
+
+    <div class="main-container">
+        <section class="catalog-container">
+            <div class="product-grid">
+                <div class="product">
+                    <img src="bolsita1.jpg" width="200" alt="Bolsita 1 con el mensaje 'Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte'">
+                    <div class="product-info">
+                        <span>Bolsita 1 "Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte"</span>
+                        <span>$250</span>
+                    </div>
+                    <p class="review">"Me encanta comprar sabiendo que es por una buena causa." - Juan</p>
+                    <button onclick="agregarAlCarrito('Bolsita 1', 250)">Agregar al carrito</button>
+                </div>
+
+                <div class="product">
+                    <img src="bolsita2.jpg" width="200" alt="Bolsita 2 'Donde sea que la vida te plante, florece'">
+                    <div class="product-info">
+                        <span>Bolsita 2 "Donde sea que la vida te plante, florece"</span>
+                        <span>$250</span>
+                    </div>
+                    <p class="review">"Gracias por ayudar a las personas, me encanta." - María</p>
+                    <button onclick="agregarAlCarrito('Bolsita 2', 250)">Agregar al carrito</button>
+                </div>
+
+             
+                <div class="product">
+                    <img src="bolsita3.jpg" alt="Bolsita 3 con el mensaje 'Brillas bien bonito cuando confías en tu potencial'" width="200">
+                    <div class="product-info">
+                        <span>Bolsita 3 "Brillas bien bonito cuando confías en tu potencial"</span>
+                        <span>$250</span>
+                    </div>
+                    <p class="review">"¡Qué hermoso todo!" - Marta</p>
+                    <button onclick="agregarAlCarrito('Bolsita 3', 250)">Agregar al carrito</button>
+                </div>
+
+          
+                <div class="product">
+                    <img src="llaveros.jpg" alt="Llaveros artesanales solidarios" width="200">
+                    <div class="product-info">
+                        <span>Llaveros con diseños</span>
+                        <span>$60</span>
+                    </div>
+                    <p class="review">"Son maravillosos, ¡quiero!" - Adrian</p>
+                    <button onclick="agregarAlCarrito('Llaveros', 60)">Agregar al carrito</button>
+                </div>
+
+                <div class="product">
+                    <img src="tazas.jpg" alt="Tazas con diseños personalizados" width="200">
+                    <div class="product-info">
+                        <span>Tazas</span>
+                        <span>$200</span>
+                    </div>
+                    <p class="review">"¡Qué divinos diseños!" - Agustina</p>
+                    <button onclick="agregarAlCarrito('Tazas', 200)">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+
+
+
+

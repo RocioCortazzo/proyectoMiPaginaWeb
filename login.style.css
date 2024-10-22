@@ -1,93 +1,93 @@
 body {
-    font-family: 'Josefina Sans', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, hsl(36, 93%, 47%), #2598fc);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #536d90;
 }
 
-.container {
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
-h1 {
+h2 {
+    color: #007bff;
     margin-bottom: 20px;
 }
 
-.form-container {
-    width: 100%;
-    margin-top: 20px;
-    display: none; 
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.form-container.active {
-    display: block; 
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-input {
+.form-group input {
     width: 100%;
-    padding: 7px;
-    margin: 10px 0;
-    border: 1px solid #afa9a9;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
-input:focus {
-    border-color: #577cae;
+.form-group input:focus {
+    border-color: #007bff;
     outline: none;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #548891;
-    color: rgb(243, 243, 245);
+.form-group input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 16px;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #121714;
+.form-group input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-.gender-selection {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.gender-selection label {
-    margin: 0 15px;
-    color: #333; 
-}
-
-#registerMessage, #loginMessage {
-    margin-top: 15px;
-    color: #d9534f;
-    font-size: 14px;
-}
-
-#toggleFormBtn {
-    background-color: transparent;
-    color:  #577cae;
-    border: none;
-    cursor: pointer;
+.form-group p {
     margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-group p a:hover {
     text-decoration: underline;
 }
 
-#toggleFormBtn:hover {
-    color:  #577cae;
+.form-group input[type="button"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-group input[type="button"]:hover {
+    background-color: #218838;
 }

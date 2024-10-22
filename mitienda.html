@@ -4,176 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mitienda.css">
-    <title>Tienda cuidados paliativos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Tienda Cuidados Paliativos</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 id="welcomeMessage"></h1>
-    <h2> Breve Reseña </h2>
-    <p>Somos un grupo sin fines de lucro dispuesto a brindar ayuda a pacientes en cuidados paliativos en situación de vulnerabilidad social y sus familias.</p>
-    <br>
-    <p>
-         Uno de los móviles que dio lugar a la medicina paliativa fue tomar acción frente al sufrimiento que experimentan las personas mientras atraviesan una enfermedad grave, limitante o amenazante para la vida. Los cuidados paliativos brindan una respuesta profesional, personalizada, holística y humanizada a las necesidades de los pacientes. El trabajo del equipo de Cuidados Paliativos no solo se limita al paciente sino también a su familia y/o personas cercanas, continuando su labor en el acompañamiento durante la etapa del duelo.
-    </p>
-    <br>
-    <p>
-    Estar en cuidados paliativos no siempre es un evento próximo al deceso, ya que muchas veces la patología del paciente puede ser reversible, mejorar y dar el alta. Al pasar a un paciente a cuidados paliativos, buscamos darle mejor calidad de vida, confort, contención e intentamos que la persona viva este proceso en su hogar rodeado de sus seres amados.
-    </p>
-   
-    <h3> Objetivos del grupo</h3>
-    <p> 
-      Nuestro grupo busca brindar apoyo, contención, compasión, comprensión, atención y solidaridad en un aspecto integral donde se incluye tanto la parte material (compra de pañales, canastas alimentarias, frazadas, etc.) como la parte humana y emocional.
-    </p>
-
-    <h3> Desarrollo de actividades de grupo </h3>
-    <p>
-        Nos reunimos una vez a la semana con objetivos preestablecidos a tratar. Luego de cada reunión, se hace un resumen que es compartido en el grupo de WhatsApp.
-    </p>
-    <img src="foto.reunion.jpg" width="300">
-    <img src="cine.paliativos.jpg" width="300">
- 
-    <h3> Requisitos para unirte al grupo </h3>
-    <p>
-        Solo se necesita personas capaces de compartir lo que tengan en sus condiciones. Por ejemplo: hay quienes se ocupan de eventos y prensa, otros asisten a las reuniones aportando ideas y actividades para recaudar fondos, etc. Otros se ocupan de las redes y comunicación, y hay quienes aportan comentarios productivos. En el caso de las empresas y la prensa que nos apoyan y acompañan, brindan lo que esté en su rubro.
-    </p>
-    <img src="entrevistas.paliativos.jpg" width="300">
-    <img src="ropa.paliativos.jpg" width="300">
-
-
-    <div class="form-container">
-        <h2>Catálogo de Productos</h2>
-
-        <div class="product">
-            <img src="bolsita1.jpg" width="200" alt="Bolsita 1 con el mensaje 'Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte'">
-            <div class="product-info">
-                <span>Bolsita 1 "Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte"</span>
-                <span>$250</span>
-            </div>
-            <p class="review">"Me encanta comprar sabiendo que es por una buena causa." - Juan</p>
-            <button onclick="agregarAlCarrito('Bolsita 1', 250)">Agregar al carrito</button>
+    <header>
+        <div class="nav-bar">
+            <button onclick="Catalogo()">Catálogo</button>
+            <button onclick="RedesSociales()">Redes Sociales</button>
         </div>
+    </header>
 
-        <div class="product">
-            <img src="bolsita2.jpg" width="200" alt="Bolsita 2 con el mensaje 'Donde sea que la vida te plante, florece'">
-            <div class="product-info">
-                <span>Bolsita 2 "Donde sea que la vida te plante, florece"</span>
-                <span>$250</span>
-            </div>
-            <p class="review">"Gracias por ayudar a las personas, me encanta." - María</p>
-            <button onclick="agregarAlCarrito('Bolsita 2', 250)">Agregar al carrito</button>
+    <section class="intro">
+        
+        <div id="welcomeMessage"></div>
+        
+        <h2>Breve Reseña</h2>
+        <p>Somos un grupo sin fines de lucro dispuesto a brindar ayuda a pacientes en cuidados paliativos en situación de vulnerabilidad social y sus familias.</p>
+        <p>Uno de los móviles que dio lugar a la medicina paliativa fue tomar acción frente al sufrimiento que experimentan las personas mientras atraviesan una enfermedad grave, limitante o amenazante para la vida. Los cuidados paliativos brindan una respuesta profesional, personalizada, holística y humanizada a las necesidades de los pacientes. El trabajo del equipo de Cuidados Paliativos no solo se limita al paciente sino también a su familia y/o personas cercanas, continuando su labor en el acompañamiento durante la etapa del duelo.</p>
+        <p>Estar en cuidados paliativos no siempre es un evento próximo al deceso, ya que muchas veces la patología del paciente puede ser reversible, mejorar y dar el alta. Al pasar a un paciente a cuidados paliativos, buscamos darle mejor calidad de vida, confort, contención e intentamos que la persona viva este proceso en su hogar rodeado de sus seres amados.</p>
+    </section>
+
+    <section class="objectives">
+        <h3>Objetivos del grupo</h3>
+        <p>Nuestro grupo busca brindar apoyo, contención, compasión, comprensión, atención y solidaridad en un aspecto integral donde se incluye tanto la parte material (compra de pañales, canastas alimentarias, frazadas, etc.) como la parte humana y emocional.</p>
+    </section>
+
+    <section class="activities">
+        <h3>Desarrollo de actividades de grupo</h3>
+        <p>Nos reunimos una vez a la semana con objetivos preestablecidos a tratar. Luego de cada reunión, se hace un resumen que es compartido en el grupo de WhatsApp.</p>
+        <div class="image-container">
+            <img src="foto.reunion.jpg" alt="Reunión del grupo" class="activity-img">
+            <img src="cine.paliativos.jpg" alt="Actividad de cine" class="activity-img">
         </div>
+    </section>
 
-        <div class="product">
-            <img src="bolsita3.jpg" alt="Bolsita 3 con el mensaje 'Brillas bien bonito cuando confías en tu potencial'" width="200">
-            <div class="product-info">
-                <span>Bolsita 3 "Brillas bien bonito cuando confías en tu potencial"</span>
-                <span>$250</span>
-            </div>
-            <p class="review">"¡Qué hermoso todo!" - Marta</p>
-            <button onclick="agregarAlCarrito('Bolsita 3', 250)">Agregar al carrito</button>
+    <section class="join-us">
+        <h3>Requisitos para unirte al grupo</h3>
+        <p>Solo se necesitan personas capaces de compartir lo que tengan en sus condiciones. Por ejemplo: hay quienes se ocupan de eventos y prensa, otros asisten a las reuniones aportando ideas y actividades para recaudar fondos, etc. Otros se ocupan de las redes y comunicación, y hay quienes aportan comentarios productivos. En el caso de las empresas y la prensa que nos apoyan y acompañan, brindan lo que esté en su rubro.</p>
+        <div class="image-container">
+            <img src="entrevistas.paliativos.jpg" alt="Entrevistas" class="join-img">
+            <img src="ropa.paliativos.jpg" alt="Donaciones de ropa" class="join-img">
         </div>
+    </section>
 
-        <div class="product">
-            <img src="llaveros.jpg" alt="Llaveros artesanales solidarios" width="200">
-            <div class="product-info">
-                <span>Llaveros</span>
-                <span>$60</span>
-            </div>
-            <p class="review">"Son maravillosos, ¡quiero!" - Adrian</p>
-            <button onclick="agregarAlCarrito('Llaveros', 60)">Agregar al carrito</button>
-        </div>
-
-        <div class="product">
-            <img src="tazas.jpg" alt="Tazas con diseños personalizados" width="200">
-            <div class="product-info">
-                <span>Tazas</span>
-                <span>$200</span>
-            </div>
-            <p class="review">"¡Qué divinos diseños!" - Agustina</p>
-            <button onclick="agregarAlCarrito('Tazas', 200)">Agregar al carrito</button>
-        </div>
-    </div>
-
-    <div class="carrito">
-        <h2>Carrito de Compras</h2>
-        <div id="carritoItems">
-            <p class="empty-cart">El carrito está vacío.</p>
-        </div>
-        <div id="total">Total: $0</div>
-        <button id="checkout" onclick="finalizarCompra()">Finalizar Compra</button>
-    </div>
-
-    <script>
-        let carrito = [];
-        let totalCompra = 0;
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const userName = urlParams.get('name');
-
-        document.getElementById('welcomeMessage').textContent = `Bienvenid@, ${userName}! Es un placer tenerte en nuestra tienda de cuidados paliativos`;
-
-        function agregarAlCarrito(producto, precio) {
-            carrito.push({ producto, precio });
-            totalCompra += precio;
-            mostrarCarrito();
-        }
-
-        function mostrarCarrito() {
-            const carritoItems = document.getElementById('carritoItems');
-            carritoItems.innerHTML = '';
-
-            if (carrito.length === 0) {
-                carritoItems.innerHTML = '<p class="empty-cart">El carrito está vacío.</p>';
-            } else {
-                carrito.forEach((item, index) => {
-                    const div = document.createElement('div');
-                    div.innerHTML = `${item.producto} - $${item.precio} <button class="remove-button" onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
-                    carritoItems.appendChild(div);
-                });
-            }
-
-            document.getElementById('total').textContent = `Total: $${totalCompra}`;
-        }
-
-        function eliminarDelCarrito(index) {
-            totalCompra -= carrito[index].precio;
-            carrito.splice(index, 1);
-            mostrarCarrito();
-        }
-
-        function finalizarCompra() {
-            if (carrito.length === 0) {
-                alert("Tu carrito está vacío, no puedes finalizar la compra.");
-            } else {
-                let detallesCompra = 'Detalle de tu compra:\n';
-                carrito.forEach(item => {
-                    detallesCompra += `${item.producto} - $${item.precio}\n`;
-                });
-
-                alert(`${detallesCompra}\n¡Gracias por tu compra, ${userName}! Has ayudado a muchas personas. Has gastado $${totalCompra}.`);
-                carrito = [];
-                totalCompra = 0;
-                mostrarCarrito();
-            }
-        }
-    </script>
 </body>
 </html>
 
-
-<footer>
-    <p> Si tienes ganas de acercarte, puedes dejarnos tu mensaje en la web, buscarnos en nuestras redes sociales o escribirnos a nuestro número. ¡Tu aporte suma! Gracias por tomarte el tiempo para conocernos.</p>
-    <div class="contact-info">
-        <img src="logo..paliativos2.jpg" alt="Logo de la tienda" width="100">
-        <h3>Contáctanos</h3>
-        <div class="social-media">
-            <a href="https://wa.me/098354851" target="_blank">WhatsApp</a>
-            <a href="https://www.instagram.com/amigodeloscuidadospaliativos?igsh=MTR5Z3h4Z3Noa3VoNQ==" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/groups/1659633374563285/?ref=share&mibextid=NSMWBT" target="_blank">Facebook</a>
-        </div>
-    </div>
-</footer>
-
-</body>
-</html>
 
 

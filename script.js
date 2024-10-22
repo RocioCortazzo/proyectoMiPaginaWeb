@@ -1,85 +1,162 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleFormBtn = document.getElementById('toggleFormBtn');
-    const registerForm = document.getElementById('registerForm');
+   
     const loginForm = document.getElementById('loginForm');
-    const registerFormElement = document.getElementById('registerFormElement');
-    const loginFormElement = document.getElementById('loginFormElement');
-    const registerMessage = document.getElementById('registerMessage');
     const loginMessage = document.getElementById('loginMessage');
-
-    let isRegisterFormActive = true; 
-
-    
-    toggleFormBtn.addEventListener('click', () => {
-        if (isRegisterFormActive) {
-            registerForm.classList.remove('active');
-            loginForm.classList.add('active');
-            toggleFormBtn.textContent = 'Registrarse';
-            isRegisterFormActive = false;
-        } else {
-            loginForm.classList.remove('active');
-            registerForm.classList.add('active');
-            toggleFormBtn.textContent = 'Iniciar sesión';
-            isRegisterFormActive = true;
-        }
-    });
+    const registrationSuccessMessage = document.getElementById('registrationSuccessMessage');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const registerHeader = document.getElementById('registerHeader');
+    const goToLoginBtn = document.getElementById('goToLoginBtn');
 
     
-    registerFormElement.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('registerName').value;
-        const email = document.getElementById('registerEmail').value;
-
-        if (name && email) {
-            localStorage.setItem('userName', name);
-            localStorage.setItem('userEmail', email);
-            registerMessage.textContent = 'Usuario registrado exitosamente. Ya puedes inicar sesión!';
-            setTimeout(() => {
-                registerMessage.textContent = '';
-            }, 2000);
-        } else {
-            registerMessage.textContent = 'Por favor, complete todos los campos.';
-        }
-    });
-
-    
-    loginFormElement.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const loginName = document.getElementById('loginName').value;
-        const loginEmail = document.getElementById('loginEmail').value;
-        const storedName = localStorage.getItem('userName');
-        const storedEmail = localStorage.getItem('userEmail');
-
-        if (loginName === storedName && loginEmail === storedEmail) {
-            loginMessage.textContent = 'Inicio de sesión exitoso.';
-            setTimeout(() => {
-                window.location.href = `mitienda.html?name=${loginName}`; 
-            }, 2000);
-        } else {
-            loginMessage.textContent = 'Nombre o email incorrecto. Vuelve a intentarlo.';
-        }
-    });
-});
-
-
-
-registerFormElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-
-    if (name && email) {
-        const gender = document.querySelector('input[name="gender"]:checked')?.value; 
-        localStorage.setItem('userName', name);
-        localStorage.setItem('userEmail', email);
-        localStorage.setItem('userGender', gender); 
-
-        registerMessage.textContent = 'Usuario registrado exitosamente.';
-        setTimeout(() => {
-            registerMessage.textContent = '';
-        }, 2000);
-    } else {
-        registerMessage.textContent = 'Por favor, complete todos los campos.';
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (loginForm) loginForm.style.display = 'none'; 
+            if (loginMessage) loginMessage.style.display = 'block'; 
+            if (registerHeader) registerHeader.style.display = 'none';
+        });
     }
-});
 
+    if (registerBtn) {
+        registerBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (loginForm) loginForm.style.display = 'block';
+            if (loginMessage) loginMessage.style.display = 'none'; 
+            if (registerHeader) registerHeader.style.display = 'block'; 
+        });
+    }
+
+   
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (nombre && apellido && email && password) {
+                if (registrationSuccessMessage) registrationSuccessMessage.style.display = 'block';
+                loginForm.style.display = 'none'; 
+                console.log(`Usuario registrado: ${nombre} ${apellido} (${email})`);
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        });
+    }
+
+  
+    window.iniciarSesion = function() {
+        const email = document.getElementById('existingEmail').value;
+        const password = document.getElementById('existingPassword').value;
+
+        if (email && password) {
+            alert(`Bienvenido de nuevo, ${email}!`);
+            window.location.href = "mitienda.html";  
+        } else {
+            alert("Por favor, completa todos los campos.");
+        }
+    };
+
+   
+    if (goToLoginBtn) {
+        goToLoginBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (registrationSuccessMessage) registrationSuccessMessage.style.display = 'none'; 
+            if (loginMessage) loginMessage.style.display = 'block'; 
+            if (registerHeader) registerHeader.style.display = 'none'; 
+        });
+    }
+
+   
+    let carrito = [];
+    let totalCompra = 0;
+
+    const carritoContainer = document.getElementById('carritoContainer');
+    const toggleCarritoBtn = document.getElementById('toggleCarritoBtn');
+    const carritoItems = document.getElementById('carritoItems');
+    const totalElement = document.getElementById('total');
+    const emptyCartMessage = document.getElementById('emptyCartMessage');
+
+    if (toggleCarritoBtn) {
+    
+        toggleCarritoBtn.addEventListener('click', () => {
+            if (carritoContainer.style.display === 'none') {
+                carritoContainer.style.display = 'block';
+            } else {
+                carritoContainer.style.display = 'none';
+            }
+        });
+    }
+
+    
+    window.agregarAlCarrito = function(producto, precio) {
+        carrito.push({ producto, precio });
+        totalCompra += precio;
+        mostrarCarrito();
+    };
+
+    
+    function mostrarCarrito() {
+        if (carritoItems) {
+            carritoItems.innerHTML = '';  
+        }
+        if (emptyCartMessage) {
+            emptyCartMessage.style.display = 'none';  
+        }
+
+        if (carrito.length === 0) {
+            if (emptyCartMessage) {
+              
+                emptyCartMessage.style.display = 'block';
+            }
+        } else {
+           
+            carrito.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.innerHTML = `${item.producto} - $${item.precio} 
+                    <button class="remove-button" onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
+                carritoItems.appendChild(div);
+            });
+        }
+
+       
+        if (totalElement) {
+            totalElement.textContent = `Total: $${totalCompra}`;
+        }
+    }
+
+    
+    window.eliminarDelCarrito = function(index) {
+        totalCompra -= carrito[index].precio;
+        carrito.splice(index, 1);
+        mostrarCarrito();
+    };
+
+   
+    window.finalizarCompra = function() {
+        if (carrito.length === 0) {
+            alert("Tu carrito está vacío, no puedes finalizar la compra.");
+        } else {
+            let detallesCompra = 'Detalle de tu compra:\n';
+            carrito.forEach(item => {
+                detallesCompra += `${item.producto} - $${item.precio}\n`;
+            });
+
+            alert(`${detallesCompra}\n¡Gracias por tu compra! Has gastado $${totalCompra}.`);
+            carrito = [];  
+            totalCompra = 0;
+            mostrarCarrito();
+        }
+    };
+    window.Catalogo = function() {
+        window.location.href = "catalogo.html";
+    };
+
+   
+    window.RedesSociales = function() {
+        window.location.href = "redes_sociales.html"; 
+    };
+});
