@@ -11,11 +11,11 @@
 
     <div class="login-container">
         <h2>Bienvenido a nuestra página oficial</h2>
-        <img src="logo..paliativos2.jpg" width="200">
+        <img src="logo..paliativos2.jpg" width="100" alt="Logo">
         
         <h3 id="registerHeader">Registrarse</h3>
 
-        <form id="loginForm">
+        <form id="registerForm">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
@@ -37,21 +37,29 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Crear cuenta">
+                <label for="genero">Género:</label>
+                <select id="genero" name="genero" required>
+                    <option value="">Selecciona tu género</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="otro">Otro</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <p>¿Ya tienes una cuenta? <a href="#" id="loginBtn">Iniciar sesión aquí</a></p>
+                <input type="submit" value="Crear cuenta">
+            </div>
+
+            <div id="accountExistsMessage" style="display:none; color:red;">
+                <p>Ya existe una cuenta con este correo. Por favor, inicia sesión.</p>
             </div>
         </form>
 
-        
         <div id="registrationSuccessMessage" style="display:none;">
             <p>¡Te has registrado con éxito! Ahora puedes iniciar sesión con tu correo y contraseña.</p>
             <button id="goToLoginBtn">Iniciar sesión</button> 
         </div>
 
-        
         <div id="loginMessage" style="display:none;">
             <h3>Iniciar sesión</h3>
             <form id="existingLoginForm">
@@ -74,9 +82,10 @@
                 </div>
             </form>
         </div>
+
     </div>
 
-   
 </body>
 </html>
+
 

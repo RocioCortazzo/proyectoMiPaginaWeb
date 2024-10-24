@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background: linear-gradient(to right, #f09809, #0091EA);
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,22 +10,39 @@ body {
 }
 
 .login-container {
-    background-color: #fff;
-    padding: 30px;
+    background-color: #ffffff;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    max-width: 320px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 h2 {
     color: #007bff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    word-wrap: break-word;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .login-container {
+        padding: 15px;
+    }
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-align: left;
 }
 
@@ -37,8 +54,8 @@ h2 {
 
 .form-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    border: 1px solid rgb(246, 240, 240);
     border-radius: 5px;
     font-size: 14px;
     box-sizing: border-box;
@@ -55,11 +72,48 @@ h2 {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .form-group input[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#goToLoginBtn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#goToLoginBtn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #fff;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="none" stroke="%23007bff" stroke-width="1.5" d="M1 4.5l7 7 7-7" /%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .form-group p {
@@ -91,3 +145,4 @@ h2 {
 .form-group input[type="button"]:hover {
     background-color: #218838;
 }
+
