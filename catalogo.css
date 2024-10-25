@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f8fc;
+    background-color: #e3f2fd; /* Fondo celeste claro */
     margin: 0;
     padding: 0;
     color: #333;
@@ -11,7 +11,7 @@ body {
 header {
     text-align: center;
     padding: 20px;
-    background-color: #8f5897;
+    background-color: #90caf9; /* Celeste pastel */
     color: #fff;
     margin-bottom: 40px;
     position: relative;
@@ -34,32 +34,41 @@ h2 {
 
 /* Botón de carrito */
 #toggleCarritoBtn {
-    background-color: #3498db;
+    background-color: #64b5f6; /* Celeste medio */
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+#toggleCarritoBtn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
 }
 
 #toggleCarritoBtn:hover {
-    background-color: #2980b9;
+    background-color: #42a5f5; /* Celeste más oscuro para hover */
 }
 
 /* Carrito dentro del encabezado */
 .carrito-container {
-    background-color: white;
-    padding: 20px;
-    width: 300px;
+    background-color: #f0f4ff; /* Fondo gris azulado claro */
+    padding: 10px; /* Reducido padding para un contenedor más pequeño */
+    width: 250px; /* Ancho reducido */
     position: absolute;
-    top: 80px;
+    top: 100px; /* Ajustado para estar más abajo y separado del botón */
     right: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d7d7d7;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 999;
-    max-height: 70vh;
+    max-height: 60vh; /* Limitar altura */
     overflow-y: auto;
     transition: transform 0.3s ease;
 }
@@ -69,25 +78,70 @@ h2 {
     transform: translateY(0);
 }
 
+/* Estilo del carrito */
 .carrito-container h2 {
     margin-top: 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Ajustado para que sea más pequeño */
+    color: #90caf9; /* Celeste pastel */
 }
 
 #carritoItems {
-    margin: 20px 0;
+    margin: 10px 0; /* Ajustado para un espacio más pequeño */
+}
+
+/* Estilo de cada item en el carrito */
+.carrito-item {
+    padding: 10px; /* Ajustado para un padding más pequeño */
+    border: 1px solid #ccc;
+    margin: 5px 0; /* Ajustado para un margen más pequeño */
+    border-radius: 5px;
+    background-color: #ffffff; /* Fondo blanco para ítems */
+    transition: background-color 0.2s;
+}
+
+.carrito-item:hover {
+    background-color: #e1f5fe; /* Color celeste claro al pasar el mouse */
 }
 
 #total {
-    font-size: 1.5rem;
-    margin-top: 20px;
+    font-size: 1.2rem; /* Ajustado para un tamaño más pequeño */
+    margin-top: 10px; /* Ajustado para un margen más pequeño */
     font-weight: bold;
+}
+
+/* Botón de finalizar compra */
+#checkout {
+    background-color: #81d4fa; /* Celeste claro */
+    color: white;
+    padding: 10px 20px; /* Ajustado para un padding más pequeño */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem; /* Tamaño de fuente ajustado */
+    text-align: center;
+    margin-top: 10px; /* Margen superior reducido */
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+#checkout:hover {
+    background-color: #4fc3f7; /* Celeste más oscuro para hover */
+    transform: scale(1.05);
+    border: 1px solid #81d4fa; /* Borde en hover */
+}
+
+/* Agregar un efecto de foco */
+#checkout:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(129, 212, 250, 0.5);
 }
 
 /* Catálogo de productos */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ajustado a 220px para un tamaño más pequeño y consistente */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
@@ -96,12 +150,13 @@ h2 {
 
 /* Producto individual */
 .product {
+    width: 210px;
+    height: 350px;
     background-color: #fff;
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 8px;
     transition: box-shadow 0.3s ease;
-    text-align: center; /* Centrar el contenido del producto */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -113,34 +168,37 @@ h2 {
 
 .product img {
     width: 100%;
-    height: 180px; /* Definir una altura consistente para las imágenes */
+    height: 150px;
     border-radius: 8px;
     object-fit: cover;
 }
 
 .product-info {
-    margin: 15px 0;
-    font-size: 1.1rem;
-    color: #555;
+    margin: 4px 0;
+    font-size: 1rem;
+    text-align: center;
 }
 
-button {
-    background-color: #3498db;
+/* Botón Agregar al carrito dentro del producto */
+.product button {
+    margin-top: auto;
+    background-color: #81d4fa; /* Celeste claro */
     color: white;
-    padding: 10px 15px;
+    padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
-button:hover {
-    background-color: #2980b9;
+.product button:hover {
+    background-color: #4fc3f7; /* Celeste más oscuro para hover */
 }
 
+/* Estilo del carrito */
 .remove-button {
-    background-color: #e74c3c;
+    background-color: #e74c3c; /* Rojo para eliminar */
     color: white;
     padding: 5px 10px;
     border: none;
@@ -150,9 +208,10 @@ button:hover {
 }
 
 .remove-button:hover {
-    background-color: #c0392b;
+    background-color: #c0392b; /* Rojo oscuro para hover */
 }
 
+/* Cart Empty Message */
 .empty-cart {
     font-size: 1.2rem;
     color: #999;
@@ -166,7 +225,7 @@ button:hover {
     }
 
     .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Un solo producto por fila en pantallas pequeñas */
     }
 
     .carrito-container {

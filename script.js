@@ -1,93 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
+    const loginForm = document.getElementById('registerForm');
     const loginMessage = document.getElementById('loginMessage');
     const registrationSuccessMessage = document.getElementById('registrationSuccessMessage');
     const loginBtn = document.getElementById('loginBtn');
     const registerBtn = document.getElementById('registerBtn');
     const registerHeader = document.getElementById('registerHeader');
-    const goToLoginBtn = document.getElementById('goToLoginBtn');
-    const registerForm = document.getElementById('registerForm');
-    const accountExistsMessage = document.getElementById('accountExistsMessage'); // Elemento del mensaje de cuenta existente
+    const loginRedirectBtn = document.getElementById('loginRedirectBtn');
 
-    // Manejar el registro
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const apellido = document.getElementById('apellido').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const genero = document.getElementById('genero').value;
-            const emailRegistrado = localStorage.getItem('emailUsuario'); // Verificar si el email ya existe
-            
-            // Ocultar el mensaje de cuenta existente antes de hacer cualquier verificación
-            accountExistsMessage.style.display = 'none';
+    const catalogoBtn = document.getElementById('catalogoBtn');
+    const redesSocialesBtn = document.getElementById('redesSocialesBtn');
 
-            if (email === emailRegistrado) {
-                accountExistsMessage.style.display = 'block'; // Mostrar el mensaje de cuenta existente
-                return;
-            }
-
-            if (nombre && apellido && email && password && genero) {
-                localStorage.setItem('nombreUsuario', nombre);
-                localStorage.setItem('emailUsuario', email); // Guardar el email registrado
-                if (registrationSuccessMessage) registrationSuccessMessage.style.display = 'block';
-                registerForm.style.display = 'none'; 
-                console.log(`Usuario registrado: ${nombre} ${apellido} (${email}) - Género: ${genero}`);
-            } else {
-                alert("Por favor, completa todos los campos.");
-            }
-        });
-    }
-
-    // Manejar el inicio de sesión
-    window.iniciarSesion = function() {
-        const email = document.getElementById('existingEmail').value;
-        const password = document.getElementById('existingPassword').value;
-
-        if (email && password) {
-            const nombre = localStorage.getItem('nombreUsuario');
-            const mensajeBienvenida = `Bienvenid@, ${nombre || email}! es un placer tenerte en nuestra página!`;
-            localStorage.setItem('mensajeBienvenida', mensajeBienvenida); // Guardar mensaje en localStorage
-            window.location.href = "mitienda.html";  
-        } else {
-            alert("Por favor, completa todos los campos.");
-        }
-    };
-
-    // Cambiar a la vista de registro
-    if (registerBtn) {
-        registerBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (registerForm) registerForm.style.display = 'block'; 
-            if (loginMessage) loginMessage.style.display = 'none'; 
-            if (registerHeader) registerHeader.style.display = 'block'; 
-            if (loginForm) loginForm.style.display = 'none'; 
-        });
-    }
-
-    // Cambiar a la vista de inicio de sesión
-    if (loginBtn) {
-        loginBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (loginForm) loginForm.style.display = 'none'; 
-            if (loginMessage) loginMessage.style.display = 'block'; 
-            if (registerHeader) registerHeader.style.display = 'none';
-        });
-    }
-
-    // Regresar al inicio de sesión
-    if (goToLoginBtn) {
-        goToLoginBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (registrationSuccessMessage) registrationSuccessMessage.style.display = 'none'; 
-            if (loginMessage) loginMessage.style.display = 'block'; 
-            if (registerHeader) registerHeader.style.display = 'none'; 
-            if (registerForm) registerForm.style.display = 'none'; 
-        });
-    }
-
-    // Carrito de compras
     let carrito = [];
     let totalCompra = 0;
     const carritoContainer = document.getElementById('carritoContainer');
@@ -96,45 +18,104 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalElement = document.getElementById('total');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
 
+    const camposCompletos = (campos) => {
+        return campos.every(campo => campo.value.trim() !== '');
+    };
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginForm, false);
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registerHeader, false);
+        });
+    }
+
+    if (registerBtn) {
+        registerBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginForm, true);
+            toggleVisibility(loginMessage, false);
+            toggleVisibility(registerHeader, true);
+            toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre');
+            const apellido = document.getElementById('apellido');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const genero = document.getElementById('genero');
+
+            if (camposCompletos([nombre, apellido, email, password, genero])) {
+                localStorage.setItem('nombreUsuario', nombre.value);
+                localStorage.setItem('emailUsuario', email.value);
+                toggleVisibility(registrationSuccessMessage, true);
+                toggleVisibility(loginForm, false);
+                toggleVisibility(loginMessage, false);
+                toggleVisibility(registerHeader, false);
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        });
+    }
+
+    window.iniciarSesion = function() {
+        const email = document.getElementById('existingEmail').value;
+        const password = document.getElementById('existingPassword').value;
+
+        if (email && password) {
+            const nombre = localStorage.getItem('nombreUsuario');
+            const mensajeBienvenida = `Bienvenid@, ${nombre || email}! es un placer tenerte en nuestra página!`;
+            localStorage.setItem('mensajeBienvenida', mensajeBienvenida);
+            window.location.href = "mitienda.html";  
+        } else {
+            alert("Por favor, completa todos los campos.");
+        }
+    };
+
+    if (loginRedirectBtn) {
+        loginRedirectBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
+
     if (toggleCarritoBtn) {
         toggleCarritoBtn.addEventListener('click', () => {
             carritoContainer.style.display = carritoContainer.style.display === 'none' ? 'block' : 'none';
         });
     }
 
-    // Agregar productos al carrito
     window.agregarAlCarrito = function(producto, precio) {
         carrito.push({ producto, precio });
         totalCompra += precio;
         mostrarCarrito();
     };
 
-    // Mostrar carrito
     function mostrarCarrito() {
-        if (carritoItems) carritoItems.innerHTML = '';
-        if (emptyCartMessage) emptyCartMessage.style.display = 'none';
+        carritoItems.innerHTML = '';
+        emptyCartMessage.style.display = carrito.length === 0 ? 'block' : 'none';
 
-        if (carrito.length === 0) {
-            if (emptyCartMessage) emptyCartMessage.style.display = 'block';
-        } else {
-            carrito.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.innerHTML = `${item.producto} - $${item.precio} <button class="remove-button" onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
-                carritoItems.appendChild(div);
-            });
-        }
+        carrito.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.innerHTML = `${item.producto} - $${item.precio} <button class="remove-button" onclick="eliminarDelCarrito(${index})">Eliminar</button>`;
+            carritoItems.appendChild(div);
+        });
 
-        if (totalElement) totalElement.textContent = `Total: $${totalCompra}`;
+        totalElement.textContent = `Total: $${totalCompra}`;
     }
 
-    // Eliminar producto del carrito
     window.eliminarDelCarrito = function(index) {
         totalCompra -= carrito[index].precio;
         carrito.splice(index, 1);
         mostrarCarrito();
     };
 
-    // Finalizar compra
     window.finalizarCompra = function() {
         if (carrito.length === 0) {
             alert("Tu carrito está vacío, no puedes finalizar la compra.");
@@ -143,16 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
             carrito.forEach(item => {
                 detallesCompra += `${item.producto} - $${item.precio}\n`;
             });
-            alert(`${detallesCompra}\n¡Gracias por tu compra! Has gastado $${totalCompra}.`);
+            const nombre = localStorage.getItem('nombreUsuario') || 'Cliente'; 
+            alert(`${detallesCompra}\n¡Gracias por tu compra! ${nombre}, has ayudado a muchas personas! Has gastado $${totalCompra}.`);
             carrito = [];
             totalCompra = 0;
             mostrarCarrito();
         }
     };
-
-    // Navegación
-    const catalogoBtn = document.getElementById('catalogoBtn');
-    const redesSocialesBtn = document.getElementById('redesSocialesBtn');
 
     if (catalogoBtn) {
         catalogoBtn.addEventListener('click', () => {
@@ -162,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (redesSocialesBtn) {
         redesSocialesBtn.addEventListener('click', () => {
-            window.location.href = "redes_sociales.html"; 
+            console.log('Redirigiendo a Redes Sociales...');
+            window.location.href = "redes.Sociales.html";
         });
     }
 
-    // Mostrar mensaje de bienvenida
     const welcomeMessage = localStorage.getItem('mensajeBienvenida');
     const welcomeDiv = document.getElementById('welcomeMessage');
 
@@ -174,5 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         welcomeDiv.innerHTML = `<h2>${welcomeMessage}</h2>`;
         welcomeDiv.style.display = 'block';
         localStorage.removeItem('mensajeBienvenida');
+    }
+
+    function toggleVisibility(element, isVisible) {
+        if (element) {
+            element.style.display = isVisible ? 'block' : 'none';
+        }
     }
 });

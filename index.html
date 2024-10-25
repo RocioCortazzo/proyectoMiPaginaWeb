@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="login.style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Cormorant" rel="stylesheet">
 </head>
 <body>
 
     <div class="login-container">
         <h2>Bienvenido a nuestra página oficial</h2>
-        <img src="logo..paliativos2.jpg" width="100" alt="Logo">
+        <img src="logo.blanco.jpg" width="200" alt="Logo">
         
         <h3 id="registerHeader">Registrarse</h3>
 
@@ -47,17 +48,17 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Crear cuenta">
+                <button type="submit" class="button-success">Crear cuenta</button>
             </div>
 
-            <div id="accountExistsMessage" style="display:none; color:red;">
-                <p>Ya existe una cuenta con este correo. Por favor, inicia sesión.</p>
+            <div class="form-group already-have-account">
+                <p>¿Ya tienes una cuenta? <a href="#" id="loginBtn">Iniciar sesión aquí</a></p>
             </div>
         </form>
 
         <div id="registrationSuccessMessage" style="display:none;">
             <p>¡Te has registrado con éxito! Ahora puedes iniciar sesión con tu correo y contraseña.</p>
-            <button id="goToLoginBtn">Iniciar sesión</button> 
+            <button id="loginRedirectBtn" class="button-login">Iniciar sesión</button>
         </div>
 
         <div id="loginMessage" style="display:none;">
@@ -74,10 +75,10 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="button" value="Iniciar sesión" onclick="iniciarSesion()">
+                    <button type="button" class="button-login" onclick="iniciarSesion()">Iniciar sesión</button>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group already-have-account">
                     <p>¿No tienes cuenta? <a href="#" id="registerBtn">Regístrate aquí</a></p>
                 </div>
             </form>
@@ -87,5 +88,3 @@
 
 </body>
 </html>
-
-

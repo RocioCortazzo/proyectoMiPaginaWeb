@@ -22,11 +22,11 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5em; /* Tamaño reducido */
+    font-size: 1.5em;
 }
 
 h3 {
-    font-size: 1.5em; /* Tamaño reducido */
+    font-size: 1.5em;
 }
 
 .nav-bar {
@@ -70,37 +70,37 @@ section {
 
 .intro, .objectives, .activities, .join-us {
     background-color: #fff;
-    padding: 20px; /* Reducir el padding para un mejor ajuste */
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     display: flex;
-    flex-direction: column; /* Alinear texto y imagen en columna */
-    align-items: center; /* Centrar el contenido */
+    flex-direction: column;
+    align-items: center;
 }
 
 .intro h2, .objectives h3, .activities h3, .join-us h3 {
-    margin-top: 0; /* Eliminar margen superior en encabezados */
+    margin-top: 0;
 }
 
 .intro p, .objectives p, .activities p, .join-us p {
     margin-bottom: 20px;
-    font-size: 1em; /* Tamaño de texto más pequeño */
+    font-size: 1em;
     line-height: 1.5;
     text-align: justify;
 }
 
 .image-container {
     display: flex;
-    justify-content: center; /* Centrar imágenes */
-    flex-wrap: wrap; /* Permitir que las imágenes se ajusten */
+    justify-content: center;
+    flex-wrap: wrap;
     margin-top: 20px;
-    gap: 20px; /* Espaciado entre imágenes */
+    gap: 20px;
 }
 
 .image-container img {
     border-radius: 12px;
-    max-width: 200px; /* Tamaño máximo reducido */
+    max-width: 200px;
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -138,13 +138,13 @@ footer p {
 }
 
 #welcomeMessage {
-    font-size: 1.2em; /* Tamaño de fuente más pequeño */
-    color: #1b616a; /* Color para el mensaje de bienvenida */
+    font-size: 1.2em; 
+    color: #1b616a;
     text-align: center;
-    background-color: #e0f7fa; /* Fondo suave para destacar el mensaje */
-    border: 2px solid #1b616a; /* Borde para darle forma de cuadro */
-    padding: 15px; /* Espaciado interior */
-    border-radius: 8px; /* Bordes redondeados */
-    margin: 20px auto; /* Centrar el mensaje */
-    width: 80%; /* Ancho para ajustar el cuadro */
+    background-color: #e0f7fa;
+    border: 2px solid #1b616a;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
 }
