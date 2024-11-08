@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Cormorant&display=swap');
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #e3f2fd; /* Fondo celeste claro */
@@ -10,10 +12,10 @@ body {
 /* Header */
 header {
     text-align: center;
-    padding: 20px;
-    background-color: #90caf9; /* Celeste pastel */
+    padding: 10px;
+    background-color: #1e3a5f; /* Azul oscuro */
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -34,7 +36,7 @@ h2 {
 
 /* Botón de carrito */
 #toggleCarritoBtn {
-    background-color: #64b5f6; /* Celeste medio */
+    background-color: #64b5f6; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -52,13 +54,12 @@ h2 {
 }
 
 #toggleCarritoBtn:hover {
-    background-color: #42a5f5; /* Celeste más oscuro para hover */
+    background-color: #42a5f5; 
 }
 
-/* Carrito dentro del encabezado */
 .carrito-container {
-    background-color: #f0f4ff; /* Fondo gris azulado claro */
-    padding: 10px; /* Reducido padding para un contenedor más pequeño */
+    background-color: #f0f4ff; 
+    padding: 10px; 
     width: 250px; /* Ancho reducido */
     position: absolute;
     top: 100px; /* Ajustado para estar más abajo y separado del botón */
@@ -82,7 +83,7 @@ h2 {
 .carrito-container h2 {
     margin-top: 0;
     font-size: 1.5rem; /* Ajustado para que sea más pequeño */
-    color: #90caf9; /* Celeste pastel */
+    color: #64b5f6; /* Azul claro */
 }
 
 #carritoItems {
@@ -132,7 +133,6 @@ h2 {
     border: 1px solid #81d4fa; /* Borde en hover */
 }
 
-/* Agregar un efecto de foco */
 #checkout:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(129, 212, 250, 0.5);
@@ -151,7 +151,7 @@ h2 {
 /* Producto individual */
 .product {
     width: 210px;
-    height: 350px;
+    height: 440px;
     background-color: #fff;
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -168,7 +168,7 @@ h2 {
 
 .product img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -182,7 +182,7 @@ h2 {
 /* Botón Agregar al carrito dentro del producto */
 .product button {
     margin-top: auto;
-    background-color: #81d4fa; /* Celeste claro */
+    background-color: #64b5f6; /* Azul claro */
     color: white;
     padding: 8px;
     border: none;
@@ -193,7 +193,7 @@ h2 {
 }
 
 .product button:hover {
-    background-color: #4fc3f7; /* Celeste más oscuro para hover */
+    background-color: #42a5f5; /* Azul más oscuro para hover */
 }
 
 /* Estilo del carrito */
@@ -211,6 +211,61 @@ h2 {
     background-color: #c0392b; /* Rojo oscuro para hover */
 }
 
+/* Sector de comentarios */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.comment {
+    background-color: #f0f4ff; /* Fondo azul claro */
+    border-left: 5px solid #64b5f6; /* Borde azul */
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Cormorant', serif; /* Fuente del comentario */
+    color: #1e3a5f; /* Texto azul oscuro */
+    display: flex;
+    align-items: center;
+    height: 80px; /* Altura estándar para comentarios */
+    overflow: hidden;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 100%;
+}
+
+/* Alineación de los textos y botones de comentarios */
+.comment-input-section {
+    display: flex;
+    gap: 10px;
+}
+
+.comment-input {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.comment-button {
+    background-color: #64b5f6;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-button:hover {
+    background-color: #42a5f5;
+}
+
 /* Cart Empty Message */
 .empty-cart {
     font-size: 1.2rem;
@@ -225,7 +280,7 @@ h2 {
     }
 
     .product-grid {
-        grid-template-columns: 1fr; /* Un solo producto por fila en pantallas pequeñas */
+        grid-template-columns: 1fr; 
     }
 
     .carrito-container {
@@ -238,4 +293,31 @@ h2 {
     #toggleCarritoBtn {
         margin-top: 10px;
     }
+}
+
+.mensaje-gracias {
+    background-color: #d4edda; /* Color verde claro */
+    color: #155724; /* Texto en color verde oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.mensaje-gracias h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.mensaje-gracias p {
+    font-size: 1.1rem;
+}
+
+.mensaje-gracias pre {
+    background-color: #f8f9fa; /* Fondo gris claro para los detalles de la compra */
+    padding: 10px;
+    border-radius: 5px;
 }

@@ -1,14 +1,15 @@
 body {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Arima', sans-serif; /* Cambia la fuente principal a Arima */
     line-height: 1.7;
-    background-color: #f7f7f7;
+    background-color: #f0f8ff; /* Color de fondo celeste */
     color: #333;
     margin: 0;
     padding: 0;
+    padding-top: 130px; /* Espacio para la barra de navegación */
 }
 
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #6c6d6e;
     text-align: center;
     margin-bottom: 20px;
     font-weight: 700;
@@ -19,18 +20,21 @@ h1, h2, h3 {
 h1 {
     font-size: 2.5em;
     margin-top: 0;
+    font-family: 'Cormorant', serif; /* Usa Cormorant para h1 */
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.0em; /* Tamaño del h2 */
+    font-family: 'Cormorant', serif; /* Usa Cormorant para h2 */
 }
 
 h3 {
     font-size: 1.5em;
+    font-family: 'Cormorant', serif; /* Usa Cormorant para h3 */
 }
 
 .nav-bar {
-    background-color: #1b616a;
+    background: linear-gradient(to right, #2c3e50, #3498db);
     padding: 15px 0;
     text-align: center;
     position: fixed;
@@ -40,10 +44,15 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+}
+
 .nav-bar button {
-    background-color: #ffffff;
-    color: #2d7b86;
-    border: 2px solid #2d7b86;
+    background: linear-gradient(to right, #bfd0e0, #3498db); /* Degradado azul para los botones */
+    color: #ffffff; /* Color del texto blanco */
+    border: none; /* Sin borde */
     padding: 10px 20px;
     margin: 0 10px;
     border-radius: 50px;
@@ -55,28 +64,19 @@ h3 {
 }
 
 .nav-bar button:hover {
-    background-color: #2d7b86;
+    background: linear-gradient(to right, #2c3e50, #3498db); 
     color: #fff;
     transform: scale(1.05);
 }
 
-header h1 {
-    margin-top: 100px;
-}
-
 section {
     margin-bottom: 40px;
-}
-
-.intro, .objectives, .activities, .join-us {
-    background-color: #fff;
-    padding: 20px;
+    padding: 20px; 
+    background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 600px; 
+    margin: 20px auto; 
 }
 
 .intro h2, .objectives h3, .activities h3, .join-us h3 {
@@ -84,34 +84,49 @@ section {
 }
 
 .intro p, .objectives p, .activities p, .join-us p {
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
     font-size: 1em;
     line-height: 1.5;
     text-align: justify;
+}
+
+#welcomeMessage {
+    font-size: 1em;
+    color: #333; 
+    text-align: center;
+    margin: 20px auto; 
+    display: inline-block; 
+    padding: 10px 0; 
+    background: linear-gradient(to right, #e5e8ec, #f0f5f8); 
+}
+
+.image-text-container {
+    display: flex;
+    flex-direction: column; /* Apila imagen y texto verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    max-width: 250px; /* Limita el ancho del contenedor */
+    margin: 0 auto; /* Centra cada contenedor de imagen-texto */
 }
 
 .image-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
-    gap: 20px;
+    margin-top: 30px; /* Aumenté el margen superior para más separación */
+    gap: 20px; /* Espacio entre imágenes reducido */
 }
 
 .image-container img {
-    border-radius: 12px;
-    max-width: 200px;
+    border-radius: 8px; /* Borde redondeado más pequeño */
+    max-width: 100%;
     height: auto;
+    width: 250px; /* Ancho reducido para las imágenes */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .image-container img:hover {
     transform: scale(1.05);
-}
-
-body {
-    padding-top: 130px;
 }
 
 footer {
@@ -127,24 +142,12 @@ footer p {
 }
 
 .social-media a {
-    color: #2ecc71;
+    color: #2980b9; /* Color de los enlaces de redes sociales */
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s ease;
 }
 
 .social-media a:hover {
-    color: #27ae60;
-}
-
-#welcomeMessage {
-    font-size: 1.2em; 
-    color: #1b616a;
-    text-align: center;
-    background-color: #e0f7fa;
-    border: 2px solid #1b616a;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px auto;
-    width: 80%;
+    color: #1f6391;
 }
