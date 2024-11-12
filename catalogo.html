@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="catalogo.css">
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Catálogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Cormorant" rel="stylesheet">
+    <title>Catálogo de Productos</title>
 </head>
 <body>
     <header>
+        <div id="mensajeCompra" class="mensaje-gracias" style="display: none;"></div>
         <div class="header-content">
-            <h2>Bienvenid@ a nuestro catálogo de productos</h2>
-            <button id="toggleCarritoBtn">
+            <h1>Catálogo de Productos</h1>
+            <button id="toggleCarritoBtn" aria-label="Ver carrito">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Carrito</span>
             </button>
         </div>
     </header>
 
-    <aside class="carrito-container" id="carritoContainer" style="display:none;">
-        <h2>Carrito de Compras</h2>
-        <div id="carritoItems">
-            <p id="emptyCartMessage" class="empty-cart">El carrito está vacío.</p>
-        </div>
-        <div id="total">Total: $0</div>
-        
-        <button id="checkout" class="finalizar-compra-btn" onclick="finalizarCompra()">Finalizar Compra</button>
-    </aside>
-
-    <div class="main-container">
-        <section class="catalog-container">
-            <div class="product-grid" id="productGrid">
+    <main class="main-container">
+        <aside class="carrito-container" id="carritoContainer">
+            <h2>Carrito de Compras</h2>
+            <div id="carritoItems">
+                <p id="emptyCartMessage" class="empty-cart">El carrito está vacío.</p>
             </div>
+            <div id="total">Total: $0</div>
+            <button id="checkout" class="finalizar-compra-btn" onclick="finalizarCompra()">Finalizar Compra</button>
+        </aside>
+
+        <section class="catalog-container">
+            <div class="product-grid" id="productGrid"></div>
         </section>
-    </div>
-</div>
+    </main>
+    
+    <div id="overlay"></div>
+
+    <div id="comentarioAlerta" class="alerta-comentario hide">
+        <i class="fa fa-check-circle"></i> Comentario agregado exitosamente!
+        <button class="cerrar-alerta">&times;</button>
+    </div>    
 </body>
 </html>
-

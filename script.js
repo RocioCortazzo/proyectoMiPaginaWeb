@@ -17,22 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalElement = document.getElementById('total');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
 
-    const camposCompletos = (campos) => campos.every(campo => campo.value.trim() !== '');
+    const camposCompletos = (campos) => {
+        return campos.every(campo => campo.value.trim() !== '');
+    };
 
-    loginBtn && loginBtn.addEventListener('click', (evento) => {
-        evento.preventDefault();
-        toggleVisibility(loginForm, false);
-        toggleVisibility(loginMessage, true);
-        toggleVisibility(registerHeader, false);
-    });
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginForm, false);
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registerHeader, false);
+        });
+    }
 
-    registerBtn && registerBtn.addEventListener('click', (evento) => {
-        evento.preventDefault();
-        toggleVisibility(loginForm, true);
-        toggleVisibility(loginMessage, false);
-        toggleVisibility(registerHeader, true);
-        toggleVisibility(registrationSuccessMessage, false);
-    });
+    if (registerBtn) {
+        registerBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginForm, true);
+            toggleVisibility(loginMessage, false);
+            toggleVisibility(registerHeader, true);
+            toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
 
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
@@ -46,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (camposCompletos([nombre, apellido, email, password, genero])) {
                 localStorage.setItem('nombreUsuario', nombre.value);
                 localStorage.setItem('emailUsuario', email.value);
+                localStorage.setItem('passwordUsuario', password.value);
                 toggleVisibility(registrationSuccessMessage, true);
                 toggleVisibility(loginForm, false);
                 toggleVisibility(loginMessage, false);
@@ -55,30 +62,61 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     window.iniciarSesion = function() {
         const email = document.getElementById('existingEmail').value;
         const password = document.getElementById('existingPassword').value;
-
+    
         if (email && password) {
-            const nombre = localStorage.getItem('nombreUsuario');
-            const mensajeBienvenida = `Bienvenid@, ${nombre || email}! es un placer tenerte en nuestra página!`;
-            localStorage.setItem('mensajeBienvenida', mensajeBienvenida);
-            window.location.href = "mitienda.html";  
+            const storedEmail = localStorage.getItem('emailUsuario');
+            const storedPassword = localStorage.getItem('passwordUsuario');
+    
+            if (email === storedEmail && password === storedPassword) {
+                const nombre = localStorage.getItem('nombreUsuario');
+                const mensajeBienvenida = `Bienvenid@, ${nombre || email}! es un placer tenerte en nuestra página!`;
+                localStorage.setItem('mensajeBienvenida', mensajeBienvenida);
+                window.location.href = "mitienda.html";
+            } else {
+                mostrarAlerta("Correo o contraseña incorrectos.");
+            }
         } else {
-            alert("Por favor, completa todos los campos.");
+            mostrarAlerta("Por favor, completa todos los campos.");
         }
     };
+    
+    function mostrarAlerta(mensaje) {
+        const alerta = document.createElement('div');
+        alerta.classList.add('custom-alert');
+        alerta.textContent = mensaje;
+    
+        document.body.appendChild(alerta);
+    
+        setTimeout(() => {
+            alerta.classList.add('show');
+        }, 10);
+    
+        setTimeout(() => {
+            alerta.classList.remove('show');
+            setTimeout(() => {
+                alerta.remove();
+            }, 300);
+        }, 3000);
+    }    
 
-    loginRedirectBtn && loginRedirectBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        toggleVisibility(loginMessage, true);
-        toggleVisibility(registrationSuccessMessage, false);
-    });
+    if (loginRedirectBtn) {
+        loginRedirectBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
 
-    toggleCarritoBtn && toggleCarritoBtn.addEventListener('click', () => {
-        carritoContainer.style.display = carritoContainer.style.display === 'none' ? 'block' : 'none';
-    });
+    if (toggleCarritoBtn) {
+        toggleCarritoBtn.addEventListener('click', () => {
+            carritoContainer.style.display = carritoContainer.style.display === 'none' ? 'block' : 'none';
+        });
+    }
+
+     carritoContainer.style.display = 'none';
 
     window.agregarAlCarrito = function(producto, precio) {
         carrito.push({ producto, precio });
@@ -105,47 +143,60 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarCarrito();
     };
 
-    // Función para finalizar la compra con un mensaje personalizado
+    
     window.finalizarCompra = function() {
+        
+        const mensajeCompraDiv = document.getElementById("mensajeCompra");
+     
+        const botonAceptar = document.createElement('button');
+        botonAceptar.classList.add('aceptar-btn');
+        botonAceptar.textContent = 'Aceptar';
+    
+      
         if (carrito.length === 0) {
-            alert("Tu carrito está vacío, no puedes finalizar la compra.");
+           
+            mensajeCompraDiv.innerHTML = `<p>Tu carrito está vacío, no puedes finalizar la compra.</p>`;
+            mensajeCompraDiv.classList.add('error');
         } else {
-            let detallesCompra = 'Detalle de tu compra:\n';
+           
+            let detallesCompra = 'Detalle de tu compra:<br>';
             carrito.forEach(item => {
-                detallesCompra += `${item.producto} - $${item.precio}\n`;
+                detallesCompra += `${item.producto} - $${item.precio}<br>`;
             });
             const nombre = localStorage.getItem('nombreUsuario') || 'Cliente'; 
-            // Mensaje de agradecimiento modificado
-            const mensajeGracias = `
-                <h3>¡Gracias por tu compra, ${nombre}!</h3>
-                <p>Tu apoyo es invaluable y has ayudado a muchas personas con tu compra.</p>
-                <p><strong>Detalles de tu compra:</strong></p>
-                <pre>${detallesCompra}</pre>
-                <p><strong>Total: $${totalCompra}</strong></p>
-                <p>¡Gracias por ser parte de esta causa tan especial!</p>
-            `;
-
-            // Mostrar el mensaje en una sección destacada
-            const mensajeDiv = document.createElement('div');
-            mensajeDiv.classList.add('mensaje-gracias');
-            mensajeDiv.innerHTML = mensajeGracias;
-            document.body.appendChild(mensajeDiv); // Agregarlo al body o una sección específica de tu página
-
-            // Limpiar el carrito después de la compra
-            carrito = [];
-            totalCompra = 0;
-            mostrarCarrito();
+            mensajeCompraDiv.innerHTML = `${detallesCompra}<br><p>¡Gracias por tu compra, ${nombre}! Has gastado $${totalCompra}. ¡Has ayudado a muchas personas!</p>`;
+            mensajeCompraDiv.classList.add('exito');
         }
+    
+        mensajeCompraDiv.appendChild(botonAceptar);
+    
+      
+        document.body.appendChild(mensajeCompraDiv);
+    
+        mensajeCompraDiv.style.display = 'block';
+    
+        
+        botonAceptar.addEventListener('click', function() {
+            mensajeCompraDiv.style.display = 'none';
+        });
+    
+        carrito = [];
+        totalCompra = 0;
+        mostrarCarrito();
     };
 
-    catalogoBtn && catalogoBtn.addEventListener('click', () => {
-        window.location.href = "catalogo.html";
-    });
+    if (catalogoBtn) {
+        catalogoBtn.addEventListener('click', () => {
+            window.location.href = "catalogo.html";
+        });
+    }
 
-    redesSocialesBtn && redesSocialesBtn.addEventListener('click', () => {
-        console.log('Redirigiendo a Redes Sociales...');
-        window.location.href = "redes.Sociales.html";
-    });
+    if (redesSocialesBtn) {
+        redesSocialesBtn.addEventListener('click', () => {
+            console.log('Redirigiendo a Redes Sociales...');
+            window.location.href = "redes.Sociales.html";
+        });
+    }
 
     const welcomeMessage = localStorage.getItem('mensajeBienvenida');
     const welcomeDiv = document.getElementById('welcomeMessage');
@@ -203,44 +254,66 @@ document.addEventListener('DOMContentLoaded', () => {
     window.agregarComentario = function(tituloProducto, comentario) {
         const producto = productos.find(p => p.titulo === tituloProducto);
         const emailUsuario = localStorage.getItem('emailUsuario');
-        if (producto && comentario.trim() !== "") {
+        
+        if (producto) {
+            // Agregar el comentario al producto
             producto.comentarios.push(`${comentario} - <i>${emailUsuario}</i>`);
             actualizarComentarios(tituloProducto);
-            alert(`Comentario agregado al producto ${tituloProducto}: "${comentario}"`);
+            
+            // Mostrar la alerta de comentario agregado
+            mostrarAlertaComentario();
         } else {
-            alert(`Por favor ingresa un comentario válido.`);
+            alert(`Producto "${tituloProducto}" no encontrado.`);
         }
     };
-
+    
     function actualizarComentarios(tituloProducto) {
         const productDiv = Array.from(document.getElementsByClassName('product'))
-            .find(div => div.querySelector('.product-info span').textContent.includes(tituloProducto));
+            .find(div => div.querySelector('.product-info h3').textContent.includes(tituloProducto));
         
         if (productDiv) {
             const producto = productos.find(p => p.titulo === tituloProducto);
             const reviewDiv = productDiv.querySelector('.review');
-            reviewDiv.innerHTML = producto.comentarios.join("<br>");
+            reviewDiv.innerHTML = producto.comentarios.map(c => `<p>${c}</p>`).join('');
         }
+    };
+    
+    // Función para mostrar la alerta de comentario agregado
+    function mostrarAlertaComentario() {
+        const alerta = document.getElementById('comentarioAlerta');
+        alerta.style.display = 'flex'; // Muestra la alerta
+    
+        // Buscar el botón de cierre (cruz)
+        const btnCerrar = alerta.querySelector('.cerrar-alerta');
+        
+        // Cerrar la alerta cuando se haga clic en el botón de la cruz
+        btnCerrar.addEventListener('click', () => {
+            alerta.style.display = 'none'; // Oculta la alerta
+        });
+    
+        // Ocultar la alerta después de 5 segundos
+        setTimeout(() => {
+            alerta.style.display = 'none'; // Oculta la alerta automáticamente después de 5 segundos
+        }, 5000);
     }
-
+    
     const productGrid = document.getElementById('productGrid');
     productos.forEach(producto => {
         const productDiv = document.createElement('div');
-        productDiv.classList.add('product');
+        productDiv.className = 'product';
         productDiv.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.titulo}">
-            <div class="product-info">
+        <img src="${producto.imagen}" alt="${producto.titulo}">
+        <div class="product-info">
                 <h3>${producto.titulo}</h3>
                 <p>${producto.descripcion}</p>
                 <span>$${producto.precio}</span>
                 <button onclick="agregarAlCarrito('${producto.titulo}', ${producto.precio})">Agregar al carrito</button>
                 <div class="review">${producto.comentarios.join("<br>")}</div>
                 <input type="text" placeholder="Escribe un comentario..." id="comentario_${producto.titulo}">
-                <button onclick="agregarComentario('${producto.titulo}', document.getElementById('comentario_${producto.titulo}').value)">Comentar</button>
+<button onclick="agregarComentario('${producto.titulo}', document.getElementById('comentario_${producto.titulo}').value)">Comentar</button>
             </div>
         `;
         productGrid.appendChild(productDiv);
     });
 
 });
-

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Dancing Script', cursive; 
+    font-family: 'Dancing Script', cursive;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,8 +22,8 @@ footer p {
 }
 
 .contact-info img {
-    width: 290px; 
-    height: auto; 
+    width: 290px;
+    height: auto;
     border-radius: 50%;
     margin-bottom: 15px;
 }
@@ -49,4 +49,61 @@ footer p {
 .social-link:hover {
     color: #0056b3;
     transform: scale(1.2);
+}
+
+/* Media Queries para Responsividad */
+
+/* Pantallas pequeñas (móviles - 480px) */
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 10px;
+    }
+
+    footer p {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .contact-info img {
+        width: 180px;
+    }
+
+    .social-media {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-link {
+        font-size: 1.5em;
+    }
+}
+
+/* Pantallas medianas (tabletas y dispositivos intermedios - 768px) */
+@media (max-width: 768px) {
+    .contact-info img {
+        width: 230px;
+    }
+
+    .social-link {
+        font-size: 1.6em;
+    }
+}
+
+/* Pantallas grandes (PC - 1368px) */
+@media (min-width: 1368px) {
+    footer {
+        padding: 40px 30px;
+    }
+
+    footer p {
+        font-size: 1.5em;
+    }
+
+    .contact-info img {
+        width: 290px;
+    }
+
+    .social-link {
+        font-size: 2em;
+    }
 }

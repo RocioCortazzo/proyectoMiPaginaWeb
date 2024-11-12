@@ -1,323 +1,354 @@
-@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Cormorant&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #e3f2fd; /* Fondo celeste claro */
-    margin: 0;
-    padding: 0;
-    color: #333;
-    overflow-x: hidden;
+:root {
+    --color-primary: #3f7fbf; /* Azul profesional y suave */
+    --color-secondary: #57c7b7; /* Verde agua más suave y fresco */
+    --color-accent: #ff8c42; /* Naranja cálido, pero no tan brillante */
+    --color-background: #fafafa; /* Fondo suave y claro */
+    --color-text: #333333; /* Texto oscuro, suave pero legible */
+    --color-white: #ffffff; /* Blanco puro */
+    --border-radius: 12px; /* Bordes más suaves */
+    --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra más suave */
 }
 
-/* Header */
-header {
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Cormorant');
+
+/* ------------------------------------------------------------- */
+/* Fuentes */
+body {
+    font-family: 'Cormorant', serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos de contenedores */
+#mensajeCompra {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-width: 600px;
+    width: 100%;
     text-align: center;
-    padding: 10px;
-    background-color: #1e3a5f; /* Azul oscuro */
-    color: #fff;
-    margin-bottom: 20px;
-    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos de botones */
+.aceptar-btn, .finalizar-compra-btn, .remove-button, #toggleCarritoBtn {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.aceptar-btn:hover, .finalizar-compra-btn:hover, #toggleCarritoBtn:hover {
+    background-color: #42a5f5;
+    transform: translateY(-2px);
+}
+
+.aceptar-btn {
+    background-color: #cf2323;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aceptar-btn:hover {
+    background-color: #cf2323;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.remove-button {
+    background-color: #f44336;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.remove-button:hover {
+    background-color: #e53935;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#toggleCarritoBtn {
+    display: flex;
+    align-items: center;
+}
+
+#toggleCarritoBtn i {
+    margin-right: 0.5rem;
+}
+
+/* ------------------------------------------------------------- */
+/* Estructura de la página */
+header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 0.02rem;
 }
 
-h2 {
-    font-size: 2.5rem;
+h1 {
+    font-size: 2.2rem;
+    font-family: 'Cormorant', serif;
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     letter-spacing: 1px;
-    flex: 1;
-    text-align: left;
 }
 
-/* Botón de carrito */
-#toggleCarritoBtn {
-    background-color: #64b5f6; 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 1000;
+.main-container {
     display: flex;
-    align-items: center;
-}
-
-#toggleCarritoBtn img {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-
-#toggleCarritoBtn:hover {
-    background-color: #42a5f5; 
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
 }
 
 .carrito-container {
-    background-color: #f0f4ff; 
-    padding: 10px; 
-    width: 250px; /* Ancho reducido */
-    position: absolute;
-    top: 100px; /* Ajustado para estar más abajo y separado del botón */
-    right: 20px;
-    border: 2px solid #d7d7d7;
-    border-radius: 10px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 999;
-    max-height: 60vh; /* Limitar altura */
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 300px;
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+    max-height: calc(100vh - 4rem);
     overflow-y: auto;
-    transition: transform 0.3s ease;
 }
 
-.carrito-container.open {
-    display: block;
-    transform: translateY(0);
-}
-
-/* Estilo del carrito */
 .carrito-container h2 {
-    margin-top: 0;
-    font-size: 1.5rem; /* Ajustado para que sea más pequeño */
-    color: #64b5f6; /* Azul claro */
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
 }
 
 #carritoItems {
-    margin: 10px 0; /* Ajustado para un espacio más pequeño */
-}
-
-/* Estilo de cada item en el carrito */
-.carrito-item {
-    padding: 10px; /* Ajustado para un padding más pequeño */
-    border: 1px solid #ccc;
-    margin: 5px 0; /* Ajustado para un margen más pequeño */
-    border-radius: 5px;
-    background-color: #ffffff; /* Fondo blanco para ítems */
-    transition: background-color 0.2s;
-}
-
-.carrito-item:hover {
-    background-color: #e1f5fe; /* Color celeste claro al pasar el mouse */
+    margin-bottom: 1rem;
 }
 
 #total {
-    font-size: 1.2rem; /* Ajustado para un tamaño más pequeño */
-    margin-top: 10px; /* Ajustado para un margen más pequeño */
     font-weight: bold;
+    margin: 1rem 0;
+    font-size: 1.1rem;
 }
 
-/* Botón de finalizar compra */
-#checkout {
-    background-color: #81d4fa; /* Celeste claro */
-    color: white;
-    padding: 10px 20px; /* Ajustado para un padding más pequeño */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem; /* Tamaño de fuente ajustado */
+.mensaje-gracias {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 2rem;
+    border-radius: var(--border-radius);
     text-align: center;
-    margin-top: 10px; /* Margen superior reducido */
-    transition: background-color 0.3s ease, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    border: 1px solid transparent;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: var(--box-shadow);
 }
 
-#checkout:hover {
-    background-color: #4fc3f7; /* Celeste más oscuro para hover */
-    transform: scale(1.05);
-    border: 1px solid #81d4fa; /* Borde en hover */
+/* ------------------------------------------------------------- */
+/* Contenedores de productos */
+.catalog-container {
+    flex-grow: 1;
 }
 
-#checkout:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(129, 212, 250, 0.5);
-}
-
-/* Catálogo de productos */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
-/* Producto individual */
 .product {
-    width: 210px;
-    height: 440px;
-    background-color: #fff;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: box-shadow 0.3s ease;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    height: 100%;
 }
 
 .product:hover {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .product img {
     width: 100%;
-    height: 180px;
-    border-radius: 8px;
+    height: 200px;
     object-fit: cover;
 }
 
 .product-info {
-    margin: 4px 0;
-    font-size: 1rem;
-    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/* Botón Agregar al carrito dentro del producto */
+.product h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.product p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    flex-grow: 1;
+}
+
+.product .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
 .product button {
-    margin-top: auto;
-    background-color: #64b5f6; /* Azul claro */
-    color: white;
-    padding: 8px;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
     border: none;
-    border-radius: 4px;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%;
+    font-weight: 500;
+    margin-top: auto;
 }
 
 .product button:hover {
-    background-color: #42a5f5; /* Azul más oscuro para hover */
-}
-
-/* Estilo del carrito */
-.remove-button {
-    background-color: #e74c3c; /* Rojo para eliminar */
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.remove-button:hover {
-    background-color: #c0392b; /* Rojo oscuro para hover */
-}
-
-/* Sector de comentarios */
-.comment-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.comment {
-    background-color: #f0f4ff; /* Fondo azul claro */
-    border-left: 5px solid #64b5f6; /* Borde azul */
-    padding: 10px;
-    border-radius: 4px;
-    font-family: 'Cormorant', serif; /* Fuente del comentario */
-    color: #1e3a5f; /* Texto azul oscuro */
-    display: flex;
-    align-items: center;
-    height: 80px; /* Altura estándar para comentarios */
-    overflow: hidden;
-}
-
-.comment p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    width: 100%;
-}
-
-/* Alineación de los textos y botones de comentarios */
-.comment-input-section {
-    display: flex;
-    gap: 10px;
-}
-
-.comment-input {
-    flex-grow: 1;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.comment-button {
-    background-color: #64b5f6;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.comment-button:hover {
     background-color: #42a5f5;
 }
 
-/* Cart Empty Message */
-.empty-cart {
-    font-size: 1.2rem;
+/* ------------------------------------------------------------- */
+/* Comentarios */
+.comment {
+    background-color: #f4f9fb;
+    border-left: 4px solid var(--color-secondary);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Cormorant', serif;
+    font-size: 0.95rem;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.comment p {
+    color: #333;
+}
+
+.comment-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.comment-footer span {
+    font-weight: 600;
+    font-size: 0.9rem;
     color: #999;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr; 
-    }
-
-    .carrito-container {
-        position: relative;
-        width: 100%;
-        top: 0;
-        right: 0;
-    }
-
-    #toggleCarritoBtn {
-        margin-top: 10px;
-    }
+/* Estilo para la alerta de comentario */
+.alerta-comentario {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d4edda; /* Verde claro para el éxito */
+    color: #155724; /* Color oscuro para el texto */
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 1001;
+    max-width: 500px;
+    width: 100%;
+    display: none; /* Ocultada por defecto */
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-.mensaje-gracias {
-    background-color: #d4edda; /* Color verde claro */
-    color: #155724; /* Texto en color verde oscuro */
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+.alerta-comentario i {
+    margin-right: 1rem;
 }
 
-.mensaje-gracias h3 {
-    font-size: 1.5rem;
+.alerta-comentario button {
+    background: transparent;
+    border: none;
+    color: #155724;
+    font-size: 1.2rem;
+    cursor: pointer;
     font-weight: bold;
 }
 
-.mensaje-gracias p {
-    font-size: 1.1rem;
+.alerta-comentario button:hover {
+    color: #004d21;
 }
 
-.mensaje-gracias pre {
-    background-color: #f8f9fa; /* Fondo gris claro para los detalles de la compra */
-    padding: 10px;
-    border-radius: 5px;
+/* Animación para hacer que la alerta aparezca */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Estilo cuando la alerta se oculte */
+.alerta-comentario.hide {
+    display: none;
+}
+
+/* ------------------------------------------------------------- */
+/* Responsividad */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .carrito-container {
+        position: static;
+        width: 100%;
+        margin-top: 2rem;
+    }
 }
