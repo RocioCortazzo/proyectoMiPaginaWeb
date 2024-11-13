@@ -59,12 +59,10 @@ body {
 }
 
 .aceptar-btn {
-    background-color: var(--color-accent); /* Rosa pastel */
     padding: 1rem 2rem;
     font-size: 1.1rem;
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .aceptar-btn:hover {
@@ -73,30 +71,14 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.aceptar-carrito-vacio-btn {
-    background-color: #f7c6d9; /* Rosa pastel */
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.aceptar-carrito-vacio-btn:hover {
-    background-color: #e694a9; /* Rosa pastel más oscuro */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
 .remove-button {
     background-color: #f44336; /* Rojo suave */
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    padding: 0.5rem 1rem; /* Reducir el tamaño del padding */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .remove-button:hover {
@@ -274,34 +256,134 @@ h1 {
     box-shadow: var(--box-shadow);
 }
 
-.comment-container h4 {
-    font-size: 1.2rem;
+.comment-container h2 {
+    font-size: 1.4rem;
     color: var(--color-primary);
-    margin-bottom: 1rem;
 }
 
-.comment-container textarea {
+.comment-container .comment {
+    background-color: var(--color-white);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.comment-container .comment p {
+    color: #555;
+}
+
+.comment-container .comment .user-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.alerta-comentario-agregado {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-size: 1.2rem;
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.alerta-comentario-agregado button {
+    background-color: #28a745; /* Verde */
+    color: #ffffff; /* Blanco */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.alerta-comentario-agregado button:hover {
+    background-color: #218838; /* Verde más oscuro */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación para hacer que la alerta aparezca */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Estilo para ocultar la alerta */
+.alerta-comentario-agregado.hide {
+    display: none;
+}
+
+.alerta-comentario-vacio {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336; /* Rojo más intenso */
+    color: #ffffff; /* Blanco para el texto */
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-size: 1.2rem;
+    z-index: 1000;
+}
+
+.alerta-comentario-vacio button {
+    background-color: #d32f2f; /* Rojo más oscuro para el botón */
+    color: var(--color-white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.alerta-comentario-vacio button:hover {
+    background-color: #b71c1c; /* Rojo más oscuro al pasar el ratón */
+    transform: translateY(-3px);
+}
+
+.comment-form textarea {
+    border: 2px solid var(--color-primary);
+    padding: 1rem;
     width: 100%;
     padding: 0.75rem;
     border-radius: var(--border-radius);
-    border: 1px solid #ddd;
+    font-size: 1rem;
     resize: vertical;
-    margin-bottom: 1rem;
+    box-sizing: border-box;
 }
 
-.comment-container button {
-    background-color: var(--color-accent); /* Rosa pastel */
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #f44336; /* Rojo intenso */
+}
+
+.comment-form button {
+    background-color: #f44336; /* Rojo para el botón */
     color: var(--color-white);
     border: none;
-    padding: 0.5rem;
+    padding: 0.75rem 1.5rem;
     border-radius: var(--border-radius);
+    font-size: 1rem;
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
-.comment-container button:hover {
-    background-color: #e694a9; /* Rosa pastel más oscuro */
+.comment-form button:hover {
+    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+    transform: translateY(-2px);
 }
 
 /* ------------------------------------------------------------- */
