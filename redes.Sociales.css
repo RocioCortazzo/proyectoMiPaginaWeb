@@ -1,16 +1,19 @@
 body {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Cormorant', serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: linear-gradient(135deg, #a8e0ff, #b3f2f7); /* Degradado de azul claro a verde agua */
+    color: #333;
 }
 
 footer {
-    background-color: #f4f4f9;
+    background: linear-gradient(135deg, #ffffff, #f4f4f9); /* Degradado suave para el footer */
     padding: 40px 20px;
     text-align: center;
     color: #333;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 footer p {
@@ -19,10 +22,11 @@ footer p {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    color: #4a4a4a;
 }
 
 .contact-info img {
-    width: 290px;
+    width: 100px;
     height: auto;
     border-radius: 50%;
     margin-bottom: 15px;
@@ -30,7 +34,7 @@ footer p {
 
 .contact-info h3 {
     margin-bottom: 10px;
-    color: #2d6a4f;
+    color: #007bff; /* Color celeste */
 }
 
 .social-media {
@@ -41,20 +45,24 @@ footer p {
 }
 
 .social-link {
-    font-size: 1.8em;
-    color: #007bff;
+    font-size: 2em;
+    color: #007bff; /* Celeste para los íconos */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-link:hover {
-    color: #0056b3;
-    transform: scale(1.2);
+    color: #2d9bf0; /* Un tono más oscuro de celeste */
+    transform: scale(1.2); /* Efecto de aumento en el hover */
 }
 
 /* Media Queries para Responsividad */
 
 /* Pantallas pequeñas (móviles - 480px) */
 @media (max-width: 480px) {
+    body {
+        background: linear-gradient(135deg, #a8e0ff, #b3f2f7); /* Fondo mejorado para móviles */
+    }
+
     footer {
         padding: 20px 10px;
     }
@@ -65,7 +73,7 @@ footer p {
     }
 
     .contact-info img {
-        width: 180px;
+        width: 120px;
     }
 
     .social-media {
@@ -78,32 +86,40 @@ footer p {
     }
 }
 
-/* Pantallas medianas (tabletas y dispositivos intermedios - 768px) */
+/* Pantallas medianas (tabletas - 768px) */
 @media (max-width: 768px) {
+    footer {
+        padding: 30px 15px;
+    }
+
+    footer p {
+        font-size: 1.1em;
+    }
+
     .contact-info img {
-        width: 230px;
+        width: 150px;
     }
 
     .social-link {
-        font-size: 1.6em;
+        font-size: 1.8em;
     }
 }
 
 /* Pantallas grandes (PC - 1368px) */
 @media (min-width: 1368px) {
     footer {
-        padding: 40px 30px;
+        padding: 50px 30px;
     }
 
     footer p {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
 
     .contact-info img {
-        width: 290px;
+        width: 200px;
     }
 
     .social-link {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 }

@@ -1,4 +1,4 @@
-:root {
+:root { 
     --color-primary: #2c3e50; /* Azul como base */
     --color-secondary: #a3d9c5; /* Verde agua suave */
     --color-accent: #f7c6d9; /* Rosa pastel */
@@ -323,13 +323,14 @@ h1 {
     display: none;
 }
 
+/* Estilos para la alerta de comentario vacío */
 .alerta-comentario-vacio {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #f44336; /* Rojo más intenso */
-    color: #ffffff; /* Blanco para el texto */
+    background-color: #f8d7da; /* Color de fondo suave (rojo claro) */
+    color: #721c24; /* Color del texto (rojo oscuro) */
     padding: 1.5rem 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -338,7 +339,7 @@ h1 {
 }
 
 .alerta-comentario-vacio button {
-    background-color: #d32f2f; /* Rojo más oscuro para el botón */
+    background-color: var(--color-accent); /* Rosa pastel */
     color: var(--color-white);
     border: none;
     padding: 0.75rem 1.5rem;
@@ -349,7 +350,7 @@ h1 {
 }
 
 .alerta-comentario-vacio button:hover {
-    background-color: #b71c1c; /* Rojo más oscuro al pasar el ratón */
+    background-color: #e694a9;
     transform: translateY(-3px);
 }
 
@@ -357,7 +358,6 @@ h1 {
     border: 2px solid var(--color-primary);
     padding: 1rem;
     width: 100%;
-    padding: 0.75rem;
     border-radius: var(--border-radius);
     font-size: 1rem;
     resize: vertical;
@@ -366,23 +366,22 @@ h1 {
 
 .comment-form textarea:focus {
     outline: none;
-    border-color: #f44336; /* Rojo intenso */
+    border-color: var(--color-accent); /* Rosa pastel */
 }
 
 .comment-form button {
-    background-color: #f44336; /* Rojo para el botón */
+    background-color: var(--color-accent);
     color: var(--color-white);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: var(--border-radius);
     font-size: 1rem;
     cursor: pointer;
-    font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
 .comment-form button:hover {
-    background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+    background-color: #e694a9;
     transform: translateY(-2px);
 }
 
@@ -397,18 +396,4 @@ h1 {
 /* Estilo cuando la alerta se oculte */
 .alerta-comentario.hide {
     display: none;
-}
-
-/* ------------------------------------------------------------- */
-/* Responsividad */
-@media (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-    }
-
-    .carrito-container {
-        position: static;
-        width: 100%;
-        margin-top: 2rem;
-    }
 }
