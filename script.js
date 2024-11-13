@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.iniciarSesion = function() {
         const email = document.getElementById('existingEmail').value;
         const password = document.getElementById('existingPassword').value;
-    
+
         if (email && password) {
             const storedEmail = localStorage.getItem('emailUsuario');
             const storedPassword = localStorage.getItem('passwordUsuario');
-    
+
             if (email === storedEmail && password === storedPassword) {
                 const nombre = localStorage.getItem('nombreUsuario');
                 const mensajeBienvenida = `Bienvenid@, ${nombre || email}! es un placer tenerte en nuestra página!`;
@@ -82,25 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarAlerta("Por favor, completa todos los campos.");
         }
     };
-    
+
     function mostrarAlerta(mensaje) {
         const alerta = document.createElement('div');
         alerta.classList.add('custom-alert');
         alerta.textContent = mensaje;
-    
+
         document.body.appendChild(alerta);
-    
+
         setTimeout(() => {
             alerta.classList.add('show');
         }, 10);
-    
+
         setTimeout(() => {
             alerta.classList.remove('show');
             setTimeout(() => {
                 alerta.remove();
             }, 300);
         }, 3000);
-    }    
+    }
 
     if (loginRedirectBtn) {
         loginRedirectBtn.addEventListener('click', (event) => {
@@ -110,13 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (toggleCarritoBtn) {
+    if (toggleCarritoBtn && carritoContainer) {
         toggleCarritoBtn.addEventListener('click', () => {
             carritoContainer.style.display = carritoContainer.style.display === 'none' ? 'block' : 'none';
         });
     }
 
-     carritoContainer.style.display = 'none';
+    // Inicializa el carrito cerrado
+    if (carritoContainer) {
+        carritoContainer.style.display = 'none';
+    }
 
     window.agregarAlCarrito = function(producto, precio) {
         carrito.push({ producto, precio });
@@ -147,39 +150,40 @@ document.addEventListener('DOMContentLoaded', () => {
     window.finalizarCompra = function() {
         
         const mensajeCompraDiv = document.getElementById("mensajeCompra");
-     
+
         const botonAceptar = document.createElement('button');
         botonAceptar.classList.add('aceptar-btn');
         botonAceptar.textContent = 'Aceptar';
     
+    
+      
+      
       
         if (carrito.length === 0) {
            
             mensajeCompraDiv.innerHTML = `<p>Tu carrito está vacío, no puedes finalizar la compra.</p>`;
             mensajeCompraDiv.classList.add('error');
         } else {
-           
             let detallesCompra = 'Detalle de tu compra:<br>';
             carrito.forEach(item => {
                 detallesCompra += `${item.producto} - $${item.precio}<br>`;
             });
-            const nombre = localStorage.getItem('nombreUsuario') || 'Cliente'; 
+            const nombre = localStorage.getItem('nombreUsuario') || 'Cliente';
             mensajeCompraDiv.innerHTML = `${detallesCompra}<br><p>¡Gracias por tu compra, ${nombre}! Has gastado $${totalCompra}. ¡Has ayudado a muchas personas!</p>`;
             mensajeCompraDiv.classList.add('exito');
         }
-    
+
         mensajeCompraDiv.appendChild(botonAceptar);
-    
+
       
         document.body.appendChild(mensajeCompraDiv);
-    
+
         mensajeCompraDiv.style.display = 'block';
     
-        
         botonAceptar.addEventListener('click', function() {
             mensajeCompraDiv.style.display = 'none';
         });
-    
+
         carrito = [];
         totalCompra = 0;
         mostrarCarrito();
@@ -187,14 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (catalogoBtn) {
         catalogoBtn.addEventListener('click', () => {
-            window.location.href = "catalogo.html";
+            console.log('Botón Catálogo presionado');
+            window.location.href = "catalogo.html";  // Asegúrate de que la ruta sea correcta
         });
     }
 
     if (redesSocialesBtn) {
         redesSocialesBtn.addEventListener('click', () => {
-            console.log('Redirigiendo a Redes Sociales...');
-            window.location.href = "redes.Sociales.html";
+            console.log('Botón Redes Sociales presionado');
+            window.location.href = "redes.Sociales.html";  // Asegúrate de que la ruta sea correcta
         });
     }
 
@@ -215,21 +220,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const productos = [
         {
-            titulo: "Bolsita 1",
+            titulo: "Totebag corazones",
             descripcion: "Cuando pienses en las personas por las que valen la pena luchar, no olvides incluirte",
             precio: 250,
             imagen: "bolsita1.1.jpg",
             comentarios: ["Me encanta comprar sabiendo que es por una buena causa. - Juan"]
         },
         {
-            titulo: "Bolsita 2",
+            titulo: "Totebag flores",
             descripcion: "Donde sea que la vida te plante, florece",
             precio: 250,
             imagen: "bolsita2.2.jpg",
             comentarios: ["Gracias por ayudar a las personas, me encanta. - María"]
         },
         {
-            titulo: "Bolsita 3",
+            titulo: "Totebag multicolor",
             descripcion: "Brillas bien bonito cuando confías en tu potencial",
             precio: 250,
             imagen: "bolsita3.3.jpg",

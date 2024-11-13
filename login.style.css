@@ -1,6 +1,6 @@
 body {
     font-family: 'Arima', sans-serif;
-    background: linear-gradient(to right, #2c3e50, #3498db);
+    background: linear-gradient(to right, #a0d9d9, #f7c8e0); /* De verde agua a rosa pastel */
     margin: 0;
     padding: 0;
     display: flex;
@@ -25,72 +25,52 @@ body {
     margin: 0;
 }
 
-h2 {
+h2, h3 {
     font-family: 'Cormorant', serif;
-    color: #2980b9;
+    color: #3b8d8b; /* Verde agua oscuro */
     margin-bottom: 10px;
-    margin-top: 20px;
-    font-size: 1.4em;
-    word-wrap: break-word;
-}
-
-h3 {
-    font-family: 'Cormorant', serif;
-    margin-top: 5px;
-    color: #2980b9; 
     font-size: 1.4em;
 }
 
 .button-success {
-    background: linear-gradient(to right, #2c3e50, #3498db);
+    background: linear-gradient(to right, #3b8d8b, #f7a6b4); /* Verde agua a rosa pastel */
     color: #fff;
-    padding: 10px 18px; 
+    padding: 10px 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; 
+    font-size: 14px;
     transition: background-color 0.3s;
     margin-top: 10px;
     width: 100%;
 }
 
 .button-success:hover {
-    background: linear-gradient(to right, #1f6392, #2c3e50);
+    background: linear-gradient(to right, #2c7070, #e088a5); /* Más intensos en hover */
 }
 
 .button-login {
-    background-color: #2980b9;
+    background-color: #3b8d8b; /* Verde agua */
     color: #fff;
-    padding: 10px 18px; 
+    padding: 10px 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; 
+    font-size: 14px;
     transition: background-color 0.3s;
     margin-top: 10px;
     width: 100%;
 }
 
 .button-login:hover {
-    background-color: #1f6392;
-}
-
-.form-group {
-    margin-bottom: 8px;
-    text-align: left;
-}
-
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
+    background-color: #2c7070; /* Verde agua oscuro */
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #a0d9d9;
     border-radius: 5px;
     font-size: 14px;
     box-sizing: border-box;
@@ -99,63 +79,22 @@ h3 {
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #2980b9;
+    border-color: #3b8d8b;
     outline: none;
 }
 
 .form-group select {
-    padding: 12px;
-    border: 2px solid #2980b9;
-    background-color: #f0f8ff;
+    background-color: #f0fcfc; /* Suave verde agua */
     color: #333;
-    font-weight: bold;
-    transition: border-color 0.3s, background-color 0.3s;
-}
-
-.form-group select:hover {
-    background-color: #d0e7ff;
-    border-color: #1f6392;
-}
-
-.form-group select:focus {
-    border-color: #1f6392;
-}
-
-.already-have-account {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
 }
 
 .already-have-account a {
-    color: #2980b9;
+    color: #f7a6b4; /* Rosa pastel */
     text-decoration: none;
 }
 
-.already-have-account a:hover {
-    text-decoration: underline;
-    color: #1f6391;
-}
-
 .custom-alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #f44336;
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: translateY(-20px);
-    z-index: 1000;
-}
-
-.custom-alert.show {
-    opacity: 1;
-    transform: translateY(0);
+    background-color: #f783ac; /* Rosa más oscuro */
 }
 
 @media (min-width: 768px) {
@@ -164,4 +103,5 @@ h3 {
         min-height: 300px;
     }
 }
+
 
