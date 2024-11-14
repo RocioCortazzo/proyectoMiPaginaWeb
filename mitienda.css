@@ -1,7 +1,7 @@
 body {
     font-family: 'Arima', sans-serif;
     line-height: 1.7;
-    background-color: #f0f8ff;  /* Fondo suave */
+    background-color: #f0f8ff;
     color: #333;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 h1, h2, h3 {
-    color: #95bae7;  /* Tono suave que complementa los nuevos colores */
+    color: #95bae7;
     text-align: center;
     margin-bottom: 20px;
     font-weight: 700;
@@ -34,7 +34,7 @@ h3 {
 }
 
 .nav-bar {
-    background: linear-gradient(to right, #a1d8d8, #f7c6d3);  /* Verde agua y rosa pastel en la barra de navegación */
+    background: linear-gradient(to right, #a1d8d8, #f7c6d3);
     padding: 12px 0;
     text-align: center;
     position: fixed;
@@ -50,7 +50,7 @@ h3 {
 }
 
 .nav-bar button {
-    background: linear-gradient(to right, #a1d8d8, #f7c6d3);  /* Botones con gradiente de verde agua y rosa pastel */
+    background: linear-gradient(to right, #a1d8d8, #f7c6d3);
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -64,7 +64,7 @@ h3 {
 }
 
 .nav-bar button:hover {
-    background: linear-gradient(to right, #95bae7, #f7c6d3);  /* Cambio de colores al pasar el mouse */
+    background: linear-gradient(to right, #95bae7, #f7c6d3);
     color: #fff;
     transform: scale(1.05);
 }
@@ -97,7 +97,7 @@ section {
     margin: 20px auto;
     display: inline-block;
     padding: 10px 0;
-    background: linear-gradient(to right, #a1d8d8, #f7c6d3);  /* Fondo con verde agua y rosa pastel */
+    background: linear-gradient(to right, #a1d8d8, #f7c6d3);
 }
 
 .image-text-container {
@@ -130,7 +130,7 @@ section {
 }
 
 footer {
-    background-color: #a1d8d8;  /* Verde agua para el pie de página */
+    background-color: #a1d8d8;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -152,10 +152,9 @@ footer p {
     color: #1f6391;
 }
 
-/* Pantallas pequeñas (móviles - 480px) */
 @media (max-width: 480px) {
     body {
-        padding-top: 80px; /* Reduce padding superior en móviles */
+        padding-top: 80px;
     }
 
     h1 {
@@ -185,7 +184,6 @@ footer p {
     }
 }
 
-/* Pantallas medianas (tabletas y dispositivos intermedios - 768px) */
 @media (max-width: 768px) {
     .nav-bar button {
         font-size: 15px;
@@ -205,7 +203,6 @@ footer p {
     }
 }
 
-/* Pantallas grandes (PC - 1368px) */
 @media (min-width: 1368px) {
     .nav-bar button {
         font-size: 18px;

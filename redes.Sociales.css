@@ -3,17 +3,17 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #a8e0ff, #b3f2f7); /* Degradado de azul claro a verde agua */
+    background: linear-gradient(135deg, #a8e0ff, #b3f2f7); 
     color: #333;
 }
 
 footer {
-    background: linear-gradient(135deg, #ffffff, #f4f4f9); /* Degradado suave para el footer */
+    background: linear-gradient(135deg, #ffffff, #f4f4f9); 
     padding: 40px 20px;
     text-align: center;
     color: #333;
     border-top: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 footer p {
@@ -34,7 +34,7 @@ footer p {
 
 .contact-info h3 {
     margin-bottom: 10px;
-    color: #007bff; /* Color celeste */
+    color: #007bff; 
 }
 
 .social-media {
@@ -46,21 +46,20 @@ footer p {
 
 .social-link {
     font-size: 2em;
-    color: #007bff; /* Celeste para los íconos */
+    color: #007bff; 
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-link:hover {
-    color: #2d9bf0; /* Un tono más oscuro de celeste */
-    transform: scale(1.2); /* Efecto de aumento en el hover */
+    color: #2d9bf0; 
+    transform: scale(1.2); 
 }
 
-/* Media Queries para Responsividad */
 
-/* Pantallas pequeñas (móviles - 480px) */
+
 @media (max-width: 480px) {
     body {
-        background: linear-gradient(135deg, #a8e0ff, #b3f2f7); /* Fondo mejorado para móviles */
+        background: linear-gradient(135deg, #a8e0ff, #b3f2f7);
     }
 
     footer {
@@ -86,7 +85,7 @@ footer p {
     }
 }
 
-/* Pantallas medianas (tabletas - 768px) */
+
 @media (max-width: 768px) {
     footer {
         padding: 30px 15px;
@@ -105,7 +104,7 @@ footer p {
     }
 }
 
-/* Pantallas grandes (PC - 1368px) */
+
 @media (min-width: 1368px) {
     footer {
         padding: 50px 30px;

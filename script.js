@@ -192,14 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (catalogoBtn) {
         catalogoBtn.addEventListener('click', () => {
             console.log('Botón Catálogo presionado');
-            window.location.href = "catalogo.html";  // Asegúrate de que la ruta sea correcta
+            window.location.href = "catalogo.html";  
         });
     }
 
     if (redesSocialesBtn) {
         redesSocialesBtn.addEventListener('click', () => {
             console.log('Botón Redes Sociales presionado');
-            window.location.href = "redes.Sociales.html";  // Asegúrate de que la ruta sea correcta
+            window.location.href = "redes.Sociales.html";  
         });
     }
 
@@ -260,18 +260,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const producto = productos.find(p => p.titulo === tituloProducto);
         const emailUsuario = localStorage.getItem('emailUsuario');
         
-        // Verificar si el comentario está vacío
+        
         if (!comentario.trim()) {
-            mostrarAlertaComentarioVacio(); // Mostrar alerta de comentario vacío
-            return; // No continuar si el comentario está vacío
+            mostrarAlertaComentarioVacio(); 
+            return; 
         }
     
         if (producto) {
-            // Agregar el comentario al producto
+          
             producto.comentarios.push(`${comentario} - <i>${emailUsuario}</i>`);
             actualizarComentarios(tituloProducto);
             
-            // Mostrar la alerta de comentario agregado
+            
             mostrarAlertaComentario();
         } else {
             alert(`Producto "${tituloProducto}" no encontrado.`);
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Función para mostrar la alerta de comentario vacío
+   
     function mostrarAlertaComentarioVacio() {
         const alerta = document.createElement('div');
         alerta.classList.add('alerta-comentario-vacio');
@@ -298,39 +298,39 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="cerrar-alerta">Aceptar</button>
         `;
         
-        // Añadir la alerta al DOM
+        
         document.body.appendChild(alerta);
     
-        // Funcionalidad para cerrar la alerta
+       
         const cerrarBtn = alerta.querySelector('.cerrar-alerta');
         cerrarBtn.addEventListener('click', () => {
-            alerta.remove(); // Eliminar la alerta del DOM
+            alerta.remove(); 
         });
     }
     
     function mostrarAlertaComentario() {
         const alerta = document.createElement('div');
-        alerta.classList.add('alerta-comentario-agregado'); // Usar la clase correcta
+        alerta.classList.add('alerta-comentario-agregado'); 
         alerta.innerHTML = `
             <p>¡Comentario agregado exitosamente!</p>
             <button class="cerrar-alerta">Aceptar</button>
         `;
         
-        // Añadir la alerta al DOM
+       
         document.body.appendChild(alerta);
         
-        // Hacer visible la alerta (añadirla sin la clase .hide)
+      
         alerta.style.display = 'block';
-        
-        // Funcionalidad para cerrar la alerta
+    
+
         const cerrarBtn = alerta.querySelector('.cerrar-alerta');
         cerrarBtn.addEventListener('click', () => {
-            alerta.remove(); // Eliminar la alerta del DOM
+            alerta.remove(); 
         });
         
-        // Cerrar la alerta automáticamente después de 5 segundos
+       
         setTimeout(() => {
-            alerta.remove(); // Eliminar la alerta automáticamente después de 5 segundos
+            alerta.remove();
         }, 5000);
     }
     
