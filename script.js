@@ -154,10 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const botonAceptar = document.createElement('button');
         botonAceptar.classList.add('aceptar-btn');
         botonAceptar.textContent = 'Aceptar';
-    
-    
-      
-      
       
         if (carrito.length === 0) {
            
