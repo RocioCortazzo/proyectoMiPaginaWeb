@@ -2,7 +2,7 @@
 
 :root { 
   --color-primary: #2c3e50; 
-  --color-secondary: #a3d9c5; 
+  --color-secondary: #ade8d2; 
   --color-accent: #f7c6d9; 
   --color-background: #f1f7f6; 
   --color-text: #2b2b2b;
@@ -254,7 +254,7 @@ h1 {
     box-shadow: var(--box-shadow);
     gap: 1.5rem;
     min-height: 220px; 
-    border-left: 5px solid var(--color-accent); /* Añadido borde izquierdo para énfasis */
+    border-left: 5px solid var(--color-accent); 
   }
   
   .comment-container h2 {
