@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicializa el carrito cerrado
+    
     if (carritoContainer) {
         carritoContainer.style.display = 'none';
     }
