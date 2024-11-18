@@ -9,26 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const catalogoBtn = document.getElementById('catalogoBtn');
     const redesSocialesBtn = document.getElementById('redesSocialesBtn');
 
-    let carrito = [];
-    let totalCompra = 0;
-    const carritoContainer = document.getElementById('carritoContainer');
-    const toggleCarritoBtn = document.getElementById('toggleCarritoBtn');
-    const carritoItems = document.getElementById('carritoItems');
-    const totalElement = document.getElementById('total');
-    const emptyCartMessage = document.getElementById('emptyCartMessage');
-
     const camposCompletos = (campos) => {
         return campos.every(campo => campo.value.trim() !== '');
     };
-
-    if (loginBtn) {
-        loginBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            toggleVisibility(loginForm, false);
-            toggleVisibility(loginMessage, true);
-            toggleVisibility(registerHeader, false);
-        });
-    }
 
     if (registerBtn) {
         registerBtn.addEventListener('click', (event) => {
@@ -37,6 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleVisibility(loginMessage, false);
             toggleVisibility(registerHeader, true);
             toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
+
+    if (loginRedirectBtn) {
+        loginRedirectBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registrationSuccessMessage, false);
+        });
+    }
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleVisibility(loginForm, false);
+            toggleVisibility(loginMessage, true);
+            toggleVisibility(registerHeader, false);
         });
     }
 
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     window.iniciarSesion = function() {
         const email = document.getElementById('existingEmail').value;
         const password = document.getElementById('existingPassword').value;
@@ -83,32 +84,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function mostrarAlerta(mensaje) {
-        const alerta = document.createElement('div');
-        alerta.classList.add('custom-alert');
-        alerta.textContent = mensaje;
+    const welcomeMessage = localStorage.getItem('mensajeBienvenida');
+    const welcomeDiv = document.getElementById('welcomeMessage');
 
-        document.body.appendChild(alerta);
-
-        setTimeout(() => {
-            alerta.classList.add('show');
-        }, 10);
-
-        setTimeout(() => {
-            alerta.classList.remove('show');
-            setTimeout(() => {
-                alerta.remove();
-            }, 300);
-        }, 3000);
+    if (welcomeMessage && welcomeDiv) {
+        welcomeDiv.innerHTML = `<h2>${welcomeMessage}</h2>`;
+        welcomeDiv.style.display = 'block';
+        localStorage.removeItem('mensajeBienvenida');
     }
 
-    if (loginRedirectBtn) {
-        loginRedirectBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            toggleVisibility(loginMessage, true);
-            toggleVisibility(registrationSuccessMessage, false);
+    function toggleVisibility(element, isVisible) {
+        if (element) {
+            element.style.display = isVisible ? 'block' : 'none';
+        }
+    }
+
+    if (catalogoBtn) {
+        catalogoBtn.addEventListener('click', () => {
+            console.log('Botón Catálogo presionado');
+            window.location.href = "catalogo.html";  
         });
     }
+
+    if (redesSocialesBtn) {
+        redesSocialesBtn.addEventListener('click', () => {
+            console.log('Botón Redes Sociales presionado');
+            window.location.href = "redes.Sociales.html";  
+        });
+    }
+
+    let carrito = [];
+    let totalCompra = 0;
+    const carritoContainer = document.getElementById('carritoContainer');
+    const toggleCarritoBtn = document.getElementById('toggleCarritoBtn');
+    const carritoItems = document.getElementById('carritoItems');
+    const totalElement = document.getElementById('total');
+    const emptyCartMessage = document.getElementById('emptyCartMessage');
+
 
     if (toggleCarritoBtn && carritoContainer) {
         toggleCarritoBtn.addEventListener('click', () => {
@@ -168,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mensajeCompraDiv.innerHTML = `${detallesCompra}<br><p>¡Gracias por tu compra, ${nombre}! Has gastado $${totalCompra}. ¡Has ayudado a muchas personas!</p>`;
             mensajeCompraDiv.classList.add('exito');
         }
-
+        
         mensajeCompraDiv.appendChild(botonAceptar);
 
       
@@ -184,35 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         totalCompra = 0;
         mostrarCarrito();
     };
-
-    if (catalogoBtn) {
-        catalogoBtn.addEventListener('click', () => {
-            console.log('Botón Catálogo presionado');
-            window.location.href = "catalogo.html";  
-        });
-    }
-
-    if (redesSocialesBtn) {
-        redesSocialesBtn.addEventListener('click', () => {
-            console.log('Botón Redes Sociales presionado');
-            window.location.href = "redes.Sociales.html";  
-        });
-    }
-
-    const welcomeMessage = localStorage.getItem('mensajeBienvenida');
-    const welcomeDiv = document.getElementById('welcomeMessage');
-
-    if (welcomeMessage && welcomeDiv) {
-        welcomeDiv.innerHTML = `<h2>${welcomeMessage}</h2>`;
-        welcomeDiv.style.display = 'block';
-        localStorage.removeItem('mensajeBienvenida');
-    }
-
-    function toggleVisibility(element, isVisible) {
-        if (element) {
-            element.style.display = isVisible ? 'block' : 'none';
-        }
-    }
 
     const productos = [
         {
@@ -250,7 +233,27 @@ document.addEventListener('DOMContentLoaded', () => {
             imagen: "tazas.1.jpg",
             comentarios: ["¡Qué divinos diseños! - Agustina"]
         },
+      
     ];
+
+    const productGrid = document.getElementById('productGrid');
+    productos.forEach(producto => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'product';
+        productDiv.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.titulo}">
+        <div class="product-info">
+                <h3>${producto.titulo}</h3>
+                <p>${producto.descripcion}</p>
+                <span>$${producto.precio}</span>
+                <button onclick="agregarAlCarrito('${producto.titulo}', ${producto.precio})">Agregar al carrito</button>
+                <div class="review">${producto.comentarios.join("<br>")}</div>
+                <input type="text" placeholder="Escribe un comentario..." id="comentario_${producto.titulo}">
+                <button onclick="agregarComentario('${producto.titulo}', document.getElementById('comentario_${producto.titulo}').value)">Comentar</button>
+            </div>
+        `;
+        productGrid.appendChild(productDiv);
+    });
 
     window.agregarComentario = function(tituloProducto, comentario) {
         const producto = productos.find(p => p.titulo === tituloProducto);
@@ -329,24 +332,37 @@ document.addEventListener('DOMContentLoaded', () => {
             alerta.remove();
         }, 5000);
     }
-    
-    const productGrid = document.getElementById('productGrid');
-    productos.forEach(producto => {
-        const productDiv = document.createElement('div');
-        productDiv.className = 'product';
-        productDiv.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.titulo}">
-        <div class="product-info">
-                <h3>${producto.titulo}</h3>
-                <p>${producto.descripcion}</p>
-                <span>$${producto.precio}</span>
-                <button onclick="agregarAlCarrito('${producto.titulo}', ${producto.precio})">Agregar al carrito</button>
-                <div class="review">${producto.comentarios.join("<br>")}</div>
-                <input type="text" placeholder="Escribe un comentario..." id="comentario_${producto.titulo}">
-<button onclick="agregarComentario('${producto.titulo}', document.getElementById('comentario_${producto.titulo}').value)">Comentar</button>
-            </div>
-        `;
-        productGrid.appendChild(productDiv);
-    });
+
+    function mostrarAlerta(mensaje) {
+        const alerta = document.createElement('div');
+        alerta.classList.add('custom-alert');
+        alerta.textContent = mensaje;
+
+        document.body.appendChild(alerta);
+
+        setTimeout(() => {
+            alerta.classList.add('show');
+        }, 10);
+
+        setTimeout(() => {
+            alerta.classList.remove('show');
+            setTimeout(() => {
+                alerta.remove();
+            }, 300);
+        }, 3000);
+    }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
